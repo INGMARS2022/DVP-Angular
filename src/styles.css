@@ -112,4 +112,9 @@ a{
   color: var(--contrastFontColor);
   font-size: .9rem;
 }
+.main-all{
+  height: calc(100vh - 60px);
+  width: calc(100% - 60px);
+  margin-left: 60px;
+}
   
