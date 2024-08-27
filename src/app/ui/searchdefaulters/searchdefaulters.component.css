@@ -1,0 +1,32 @@
+.search{
+    width: 100%;
+    background: var(--primaryColor);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin: 20px 0;
+}
+.search-item{
+    width: 100%;
+    background: #fff;
+    margin: 7px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.search-item input{
+    width: 100%;
+    border:none;
+    outline: none;
+    padding: 2px 5px;
+}
+.search-btn{
+    display: flex;
+}
+.search-btn span{
+    display: block;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    margin: 0 10px;
+    cursor: pointer;
+}

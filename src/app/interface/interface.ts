@@ -10,3 +10,38 @@ export interface User{
     email:    string,
     name:     string
 }
+export interface Defaulters {
+    id:                    number;
+    customerAccount:       null | string;
+    customerStatus:        null | string;
+    customerClientClass:   null | string;
+    customerAccountNumber: null | string;
+    customername:          null | string;
+    billingAccount:        null | string;
+    billingBusinessName:   null | string;
+    billingSubtype:        null | string;
+    billingEmail:          null | string;
+    billingPaymentMethod:  null | string;
+    billingCycle:          null | string;
+    billingDueDate:        null | string;
+    billingFirstBill:      null | string;
+    billingRpt:            null | string;
+    serviceAccount:        null | string;
+    serviceCity:           null | string;
+    serviceAddress:        null | string;
+    videoAssets:           null | string;
+    dataAssets:            null | string;
+    voiceAssets:           null | string;
+    brmAccount:            null | string;
+    brmSegment:            null | string;
+    brmStatusAccount:      null | string;
+    brmChargeDateAccount:  null | string;
+    brmPhoneMain:          null | string;
+    brmLastPayDate:        null | string;
+    brmTLBilling:          null | string;
+    brmTBalance:           null | string;
+    brmBalanceDue:         null | string;
+    brmBalanceForDue:      null | string;
+    brmAgeOfDebt:          null | string;
+    origin:                null | string;
+}

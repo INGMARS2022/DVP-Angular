@@ -116,5 +116,50 @@ a{
   height: calc(100vh - 60px);
   width: calc(100% - 60px);
   margin-left: 60px;
+  padding: 0 20px;
+  border: solid 1px transparent;
 }
+/*table*/
+.table{
+  padding: 10px;
+  margin: 10px 0;
+  background: #fff;
+  overflow:auto;
+  max-height: 500px;
+}
+.table table{
+  font-size: .75rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+.table table mat-icon{
+  margin: 0 4px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 100;
+  color: rgba(0,0,0,.45)
+}
+.table table tr > th{
+  border-bottom: solid 2px var(--primaryColor);
+}
+.table table tr th{
+  text-align: start;
+  font-weight: 500;
+  color:var(--primaryColor);
+  padding: 8px 5px;
+}
+.table table tr td{
+  color:var(--primaryColor);
+  padding: 5px 5px;
+}
+.table table tr:nth-child(2n){
+  background: var(--primaryColor10);
+}
+.table table tbody tr:hover{
+  background: var(--secondaryColor10);
+}
+
   
