@@ -1,0 +1,36 @@
+.main{
+    background: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 3px 10px;
+}
+.main .data{
+    display: flex;
+    align-items:center;
+    justify-content:flex-end;
+    flex-wrap: wrap;
+}
+.data p{
+    width: 100%;
+    text-align: right;
+}
+.data p:first-child{
+    font-weight: 500;
+    font-size: .9rem;
+}
+.data p:last-child{
+    font-size: .75rem;
+}
+.main .out{
+    width: 50px;
+    padding: 15px;
+}
+.main .img{
+    width: 50px;
+    padding: 15px;
+}
+svg{
+    color:var(--primaryColor);
+}

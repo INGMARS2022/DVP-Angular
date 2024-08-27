@@ -8,6 +8,9 @@
 .main > div{
     width: 100%;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 .main > div:nth-child(2){
     height: 100%;
@@ -15,19 +18,8 @@
     background-size: cover;
     background-position: center;
 }
-.btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 15px;
-}
-.btn a{
-    padding: 10px 20px;
-    width: 100%;
-    background: var(--primaryColor);
-    width: 300px;
-    color: var(--contrastFontColor);
-    font-size: .9rem;
+img{
+    width: 80px;
 }
 h1{
     font-size: 1.5rem;
@@ -35,6 +27,41 @@ h1{
 p{
     font-size: .8rem;;
 }
-img{
-    width: 80px;
+.btn-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.container-form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    max-width: 500px;
+}
+.input{
+    margin: 10px 0;
+    width: 300px;
+}
+@media (max-width: 400px) {
+    .input{
+        width: 100%;
+    }
+    .btn a{
+        width: 100%
+    }
+    .main > div:nth-child(2){
+        display: none;
+    }
 }

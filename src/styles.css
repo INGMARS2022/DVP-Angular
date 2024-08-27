@@ -5,41 +5,29 @@
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: normal;
+    color: var(--primaryColor);
 }
 :root{
-    --backgroundColor: #F4F4F5;
+    --backgroundColor: #F5F5F5;
     --primaryColor :#2D3142;
     --contrastFontColor: #f0f0f0;
-  }
+    --secondaryColor :#A50104;
+}
+body{
+  background: var(--backgroundColor);
+}
 a{
   text-decoration: none;
-}
-.btn{
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-.container-form{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-.input{
-    width: 100%;
-    margin: 10px 0;
-    width: 300px;
 }
 .input small{
     display: block;
     text-align: start;
     padding: 3px 0;
-    font-size: .7rem;
+    font-size: .8rem;
 }
 .input input{
     width: 100%;
-    padding: 5px 3px;
+    padding: 8px 3px;
     border:solid 1px rgba(0, 0, 0, .3)
 }
   .roboto-thin {
@@ -113,4 +101,13 @@ a{
     font-weight: 900;
     font-style: italic;
   }
+
+.btn{
+  padding: 10px 20px;
+  width: 100%;
+  background: var(--primaryColor);
+  width: 300px;
+  color: var(--contrastFontColor);
+  font-size: .9rem;
+}
   

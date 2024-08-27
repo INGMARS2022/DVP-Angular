@@ -3,19 +3,23 @@
         <img src="/assets/logo.png" alt="">
         <h1 class="roboto-bold">Bienvenido</h1>
         <p>Por favor ingresa tus datos</p>
-        <div class="container-form">
-            <div class="input">
-                <small>Email</small>
-                <input type="email" placeholder="example@izzi.mx">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="container">
+                <div class="container-form">
+                    <div class="input">
+                        <small>Email</small>
+                        <input type="email" formControlName="usr" placeholder="example@izzi.mx">
+                    </div>
+                    <div class="input">
+                        <small>Password</small>
+                        <input type="password" formControlName="psw" placeholder="************">
+                    </div>
+                    <div class="btn-form">
+                        <button class="btn" [disabled]="loginForm.invalid"  type="submit">Iniciar Sesión</button>
+                    </div>
+                </div>
             </div>
-            <div class="input">
-                <small>Password</small>
-                <input type="password" placeholder="************">
-            </div>
-            <div class="btn">
-                <a href="">Iniciar Sesión</a>
-            </div>
-        </div>
+        </form>
     </div>
     <div>  
     </div>
