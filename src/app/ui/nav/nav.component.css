@@ -1,0 +1,80 @@
+.main{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--primaryColor);
+    width: 60px;
+    height: 100vh;
+}
+.svg{
+    color: #fff !important;
+    width: 17px;
+    height: 17px; 
+}
+a{
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    color:#fff;
+    font-weight: 600;
+    margin: 20px 0;
+}
+ul{
+    padding: 0;
+}
+li{
+    list-style: none;
+    margin: 6px 0;
+}
+li span{
+    display: flex;
+    padding: 5px 0;
+}
+li p{
+    font-size: 0;
+    transition: font-size linear 300ms;
+}
+.divider{
+    text-align: center;
+    font-size: .6rem;
+    color:#ffffff9d;
+    margin: 20px 0;
+}
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: solid 3px var(--primaryColor);
+    cursor:pointer;
+    border-right: solid 3px transparent;
+}
+.item:hover{
+    border-left: solid 3px var(--secondaryColor);
+
+}
+.active{
+    border-left: solid 3px var(--secondaryColor);
+}
+
+.bom{
+    display: none;
+    border:solid 1px var(--secondaryColor);
+    background: var(--secondaryColor);
+    margin-left: 160px;
+    position: absolute;
+    padding: 5px 15px;
+    min-width: 120px;  
+    border-radius: 5px;
+
+}
+.bom > p{
+    text-align: center!important;
+    padding: 0;
+    margin: 0;
+    font-size: .7rem!important;
+    font-weight: 300;
+    color:#fff;
+}
+.item:hover .bom{
+    display: block;
+}

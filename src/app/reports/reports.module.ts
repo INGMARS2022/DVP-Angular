@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { DefaultersComponent } from './defaulters/defaulters.component';
 import { UiModule } from "../ui/ui.module";
+import { LayoutComponent } from './layout/layout.component';
 
 
 
 @NgModule({
   declarations: [
-    DefaultersComponent
+    DefaultersComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,

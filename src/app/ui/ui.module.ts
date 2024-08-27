@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { UiRoutingModule } from './ui-routing.module';
 import { LoadingComponent } from './loading/loading.component';
 import { NavdataComponent } from './navdata/navdata.component';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
   declarations: [
     LoadingComponent,
-    NavdataComponent
+    NavdataComponent,
+    NavComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { NavdataComponent } from './navdata/navdata.component';
   ],
   exports:[
     LoadingComponent,
-    NavdataComponent
+    NavdataComponent,
+    NavComponent,
   ],
 })
 export class UiModule { }

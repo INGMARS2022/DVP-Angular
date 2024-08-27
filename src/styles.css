@@ -5,7 +5,9 @@
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: normal;
-    color: var(--primaryColor);
+}
+a, p span {
+  color: var(--primaryColor);
 }
 :root{
     --backgroundColor: #F5F5F5;
