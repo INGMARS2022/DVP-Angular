@@ -6,6 +6,7 @@ import { PaginationDefaulters, searchDefaultersStore } from 'src/app/interface/i
 import { initialpagedefaulters } from 'src/app/redux/defaulters/pagedefaulters.actions';
 import { initialsearchdefaulters, savesearchdefaulters } from 'src/app/redux/defaulters/searchdefaulters.actions';
 import { ReportsService } from 'src/app/services/reports/reports.service';
+import { XlsService } from 'src/app/services/xls/xls.service';
 
 @Component({
   selector: 'app-searchdefaulters',
@@ -25,6 +26,7 @@ export class SearchdefaultersComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private reportsService:ReportsService,
+    private xlsService:XlsService,
     private pageDefaulters:Store<{pagedefaulters:number}>,
     private searchDefaulters:Store<{searchdefaulters:searchDefaultersStore}>,
   ) { 
@@ -124,5 +126,8 @@ export class SearchdefaultersComponent implements OnInit {
     this.form.get("service")!.setValue("");
     this.setInitPageStore();
     this.newSearch();
+  }
+  down(){
+    this.xlsService.generateXLS(this.searchDefaultersStore$?.results??[]);
   }
 }
