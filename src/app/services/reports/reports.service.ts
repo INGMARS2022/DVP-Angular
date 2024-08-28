@@ -18,4 +18,9 @@ export class ReportsService {
     console.log(url);
     return this.http.get<PaginationDefaulters>(url)
   }
+  defaultersById(id:number){
+    const url=`${this.baseUrl}reports/defaultersById/${id}`;
+    console.log(url);
+    return this.http.get<Defaulters>(url)
+  }
 }

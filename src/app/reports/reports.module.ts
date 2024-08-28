@@ -5,13 +5,15 @@ import { ReportsRoutingModule } from './reports-routing.module';
 import { DefaultersComponent } from './defaulters/defaulters.component';
 import { UiModule } from "../ui/ui.module";
 import { LayoutComponent } from './layout/layout.component';
+import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.component';
 
 
 
 @NgModule({
   declarations: [
     DefaultersComponent,
-    LayoutComponent
+    LayoutComponent,
+    DefaulterdetailComponent
   ],
   imports: [
     CommonModule,

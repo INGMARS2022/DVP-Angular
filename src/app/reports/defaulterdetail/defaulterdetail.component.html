@@ -1,0 +1,159 @@
+<app-navdata></app-navdata>
+<app-nav></app-nav>
+<div class="main-all" *ngIf="defaulter">
+    <div class="main-data">
+        <div class="data-row">
+            <p>Cuenta Cliente</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{defaulter.customerAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>CRM</p>
+                <p>{{defaulter.origin}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{defaulter.customername}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Estatus</p>
+                <p>{{defaulter.customerStatus}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Clase</p>
+                <p>{{defaulter.customerClientClass}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>Cuenta Fácturación</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{defaulter.billingAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{defaulter.billingBusinessName}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Subtipo</p>
+                <p>{{defaulter.billingSubtype}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Email</p>
+                <p>{{defaulter.billingEmail}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Método de pago</p>
+                <p>{{defaulter.billingPaymentMethod}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{defaulter.billingBusinessName}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Ciclo</p>
+                <p>{{defaulter.billingCycle}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Primera</p>
+                <p>{{defaulter.billingFirstBill}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>RPT</p>
+                <p>{{defaulter.billingRpt}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>Cuenta Servicio</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{defaulter.serviceAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Ciudad</p>
+                <p>{{defaulter.serviceCity}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Dirección</p>
+                <p>{{defaulter.serviceAddress}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>BRM</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{defaulter.brmAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Segmento</p>
+                <p>{{defaulter.brmSegment}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Estatus</p>
+                <p>{{defaulter.brmStatusAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Instalación</p>
+                <p>{{defaulter.brmChargeDateAccount}}</p>
+            </div> 
+            <div class="data-row-item">
+                <p>Telefono principal</p>
+                <p>{{defaulter.brmPhoneMain}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Ultimo Pago</p>
+                <p>{{defaulter.brmLastPayDate}}</p>
+            </div>    
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Total Ultima Factura</p>
+                <p>{{defaulter.brmTLBilling}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Saldo total</p>
+                <p>{{defaulter.brmTBalance}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Saldo Vencido</p>
+                <p>{{defaulter.brmBalanceDue}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Saldo por Vencer</p>
+                <p>{{defaulter.brmBalanceForDue}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Atiguedad Deuda</p>
+                <p>{{defaulter.brmAgeOfDebt}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>VIT</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Video</p>
+                <p>{{defaulter.videoAssets}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Datos</p>
+                <p>{{defaulter.dataAssets}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Voz</p>
+                <p>{{defaulter.voiceAssets}}</p>
+            </div>
+        </div>
+    </div>
+</div>

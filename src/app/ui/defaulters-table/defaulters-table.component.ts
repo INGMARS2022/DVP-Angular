@@ -29,5 +29,8 @@ export class DefaultersTableComponent implements OnInit {
     });
     this.getZone();*/
   }
+  detail(id:number){
+
+  }
 
 }
