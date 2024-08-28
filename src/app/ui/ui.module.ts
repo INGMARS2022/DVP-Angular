@@ -8,6 +8,7 @@ import { NavComponent } from './nav/nav.component';
 import { DefaultersTableComponent } from './defaulters-table/defaulters-table.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { SearchdefaultersComponent } from './searchdefaulters/searchdefaulters.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SearchdefaultersComponent } from './searchdefaulters/searchdefaulters.c
   ],
   imports: [
     CommonModule,
-    UiRoutingModule
+    UiRoutingModule,
+    ReactiveFormsModule
   ],
   exports:[
     LoadingComponent,

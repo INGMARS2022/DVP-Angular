@@ -49,6 +49,12 @@ export interface Defaulters {
     brmAgeOfDebt:          null | string;
     origin:                null | string;
 }
+export interface searchDefaultersStore{
+    client?: string,
+    billing?:string,
+    service?:string,
+    paginator: ViewPaginator,
+}
 export interface viewDefaultersStore{
     search: viewDefaultersStoreSsearch
     results?: Array<Defaulters>,
@@ -62,6 +68,6 @@ export interface viewDefaultersStoreSsearch{
 export interface ViewPaginator{
     totalResults:      number,
     initialPage:       number,
-    finalPage:         number,
-    actualPage?:        number,
+    actualPage:        number,
+    finalPage: number;
 }

@@ -7,6 +7,7 @@ export const initialState:viewDefaultersStore={
     paginator:{
         totalResults:0,
         initialPage:1,
+        actualPage:1,
         finalPage:1,
     },
     results:[],

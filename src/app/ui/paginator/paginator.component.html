@@ -1,6 +1,6 @@
 <div class="paginator">
-    <div><p *ngIf="viewDefaultersStore$!.paginator">{{viewDefaultersStore$!.paginator.totalResults}} Resultados </p></div>
-    <div><p>Página {{viewDefaultersStore$!.paginator!.initialPage}} de {{viewDefaultersStore$!.paginator!.finalPage}}</p></div>
+    <div><p *ngIf="searchDefaultersStore$!.paginator">{{searchDefaultersStore$!.paginator.totalResults}} Resultados </p></div>
+    <div><p>Página {{pageDefaultersStore$}} de {{searchDefaultersStore$!.paginator!.finalPage}}</p></div>
     <div>
         <span (click)="after()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { viewDefaultersStore } from 'src/app/interface/interface';
+import { searchDefaultersStore, viewDefaultersStore } from 'src/app/interface/interface';
+import { savepagedefaulters } from 'src/app/redux/defaulters/pagedefaulters.actions';
 import { paginatorviewdefaulters } from 'src/app/redux/viewdefaulters.actions';
 
 @Component({
@@ -11,43 +12,56 @@ import { paginatorviewdefaulters } from 'src/app/redux/viewdefaulters.actions';
 })
 export class PaginatorComponent implements OnInit {
   @Output() page = new EventEmitter<number>();
-  viewDefaulters$:Observable<viewDefaultersStore>;
-  viewDefaultersStore$?: viewDefaultersStore;
+  pageDefaulters$:Observable<number>;
+  pageDefaultersStore$?: number;
+  searchDefaulters$:Observable<searchDefaultersStore>;
+  searchDefaultersStore$?: searchDefaultersStore;
   actualPage=1;
   initialPage=1;
   finalPage=1;
   totalResults=1;
   constructor(
-    private storeDefaulters:Store<{viewdefaulters:viewDefaultersStore}>,
+    private searchDefaulters:Store<{searchdefaulters:searchDefaultersStore}>,
+    private pageDefaulters:Store<{pagedefaulters:number}>,
   ) {
-    this.viewDefaulters$=storeDefaulters.select('viewdefaulters');
+    this.pageDefaulters$ = pageDefaulters.select('pagedefaulters');
+    this.searchDefaulters$ = searchDefaulters.select('searchdefaulters');
    }
 
   ngOnInit(): void {
-    this.viewDefaulters$.subscribe({
+    this.searchDefaulters$.subscribe({
       next: res=>{
-        //console.log(res);
-        this.viewDefaultersStore$=res;
-        this.finalPage=res.paginator!.finalPage;
-        this.initialPage=res.paginator!.initialPage;
+        this.searchDefaultersStore$=res;
+      }
+    });
+    this.pageDefaulters$.subscribe({
+      next: res=>{
+        this.pageDefaultersStore$=res;
+        this.initialPage=res;
       }
     });
   }
+  getFinalPage():number{
+    return this.searchDefaultersStore$!.paginator.finalPage;
+  }
+  getActualPage():number{
+    return this.pageDefaultersStore$!;
+  }
   next(){
-    //if(this.finalPage>this.initialPage){
-      this.initialPage=this.initialPage+1;
-      this.page.emit(this.initialPage);
-      this.storeDefaulters.dispatch(paginatorviewdefaulters({obj:this.getObj()}))
-    //}
+    if(this.getFinalPage()>this.getActualPage()){
+      this.searchDefaulters.dispatch(savepagedefaulters({page:this.getActualPage()+1}))
+    }
   }
   after(){
-    if(this.initialPage>1){
+    /*if(this.initialPage>1){
       this.initialPage=this.initialPage-1;
       this.page.emit(this.initialPage);
       this.storeDefaulters.dispatch(paginatorviewdefaulters({obj:this.getObj()}))
-    }
+    }*/
+      this.initialPage=this.initialPage-1;
+      this.searchDefaulters.dispatch(savepagedefaulters({page:this.initialPage}))
   }
-  getObj():viewDefaultersStore{
+  /*getObj():viewDefaultersStore{
     return {
       search:{},
       paginator:{
@@ -57,6 +71,6 @@ export class PaginatorComponent implements OnInit {
         totalResults:this.viewDefaultersStore$?.paginator?.totalResults??0,
       }
     };
-  }
+  }*/
 
 }

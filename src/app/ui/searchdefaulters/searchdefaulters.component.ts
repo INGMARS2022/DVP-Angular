@@ -1,8 +1,10 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { PaginationDefaulters, viewDefaultersStore } from 'src/app/interface/interface';
-import { saveviewdefaulters } from 'src/app/redux/viewdefaulters.actions';
+import { PaginationDefaulters, searchDefaultersStore } from 'src/app/interface/interface';
+import { initialpagedefaulters } from 'src/app/redux/defaulters/pagedefaulters.actions';
+import { initialsearchdefaulters, savesearchdefaulters } from 'src/app/redux/defaulters/searchdefaulters.actions';
 import { ReportsService } from 'src/app/services/reports/reports.service';
 
 @Component({
@@ -11,56 +13,98 @@ import { ReportsService } from 'src/app/services/reports/reports.service';
   styleUrls: ['./searchdefaulters.component.css']
 })
 export class SearchdefaultersComponent implements OnInit {
-  viewDefaulters$:Observable<viewDefaultersStore>;
-  viewDefaultersStore$?: viewDefaultersStore;
-  page:number=1;
+  pageDefaulters$:Observable<number>;
+  pageDefaultersStore$?: number;
+  searchDefaulters$:Observable<searchDefaultersStore>;
+  searchDefaultersStore$?: searchDefaultersStore;
+  form:FormGroup= this.fb.group({
+    client:   ['',[]],
+    billing:  ['',[]],
+    service:  ['',[]],
+  })
   constructor(
+    private fb:FormBuilder,
     private reportsService:ReportsService,
-    private storeDefaulters:Store<{viewdefaulters:viewDefaultersStore}>
+    private pageDefaulters:Store<{pagedefaulters:number}>,
+    private searchDefaulters:Store<{searchdefaulters:searchDefaultersStore}>,
   ) { 
-    this.viewDefaulters$=storeDefaulters.select('viewdefaulters');
+    this.pageDefaulters$ = pageDefaulters.select('pagedefaulters');
+    this.searchDefaulters$ = searchDefaulters.select('searchdefaulters');
   }
 
   ngOnInit(): void {
-    this.viewDefaulters$.subscribe({
+    this.searchDefaulters$.subscribe({
       next: res=>{
         console.log(res);
-        //this.viewDefaultersStore$ = res;
-        //this.search();
+        this.searchDefaultersStore$ = res;
+      }
+    });
+    this.pageDefaulters$.subscribe({
+      next: res=>{
+        console.log(res);
+        this.pageDefaultersStore$ = res;
+        this.searchPage();
       }
     });
   }
+  getPage():number{
+    return this.pageDefaultersStore$!;
+  }
+  searchPage(){
+    this.search();
+  }
+  searchBtn(){
+    this.setInitPageStore();
+    this.search();
+  }
   search(){
-    console.log(this.page + " search page");
-    this.reportsService.defaulters(this.page-1,"null","null","null").subscribe({
+    this.reportsService.defaulters(
+      this.getPage()-1,
+      this.searchDefaultersStore$!.client!,
+      this.searchDefaultersStore$!.billing!,
+      this.searchDefaultersStore$!.service!,
+    ).subscribe({
       next: res=>{
         console.log(res.content);
-        this.setStore(res);
+          this.setSearchStore(res);
       },
       error: err=>{
       }
     })
-    
   }
-  setStore(res:PaginationDefaulters){
-    let obj:viewDefaultersStore= {
-      search:{
-      },
-      results:res.content,
+  getFormData(name:string):string{
+    if(this.form.get(name)!.value == ""){return "null";}
+    else{ return this.form.get(name)!.value}
+  }
+  setSearchStore(res:PaginationDefaulters){
+    let obj:searchDefaultersStore= {
+      client: this.getFormData("client"),
+      billing: this.getFormData("billing"),
+      service: this.getFormData("service"),
       paginator:{
         totalResults:res.totalElements,
         initialPage:1,
-        finalPage: 1,
-        actualPage:1
-      }
+        actualPage:this.getPage(),
+        finalPage:this.getCalcPage(res.totalElements)
+      },
     };
-    //if(page==0){obj.paginator!.initialPage=1}
-    this.storeDefaulters.dispatch(saveviewdefaulters({obj:obj}));
+    this.searchDefaulters.dispatch(savesearchdefaulters({obj:obj}));
   }
-  /*clear(){
-    this.storeCuota.dispatch(initialviewcuota());
-    this.searchform.reset();
-    this.reset=of(true);
-    this.zone=null;
-  }*/
+  setInitSearchStore(){
+    this.searchDefaulters.dispatch(initialsearchdefaulters());
+  }
+  setInitPageStore(){
+    this.pageDefaulters.dispatch(initialpagedefaulters());
+  }
+  getCalcPage(total:number):number{
+    if(total<10)return 1;
+    if(total %10 == 0) return total/10;
+    return Math.trunc(total/10) + 1;
+  }
+  clear(){
+    this.form.get("client")!.setValue("");
+    this.form.get("billing")!.setValue("");
+    this.form.get("service")!.setValue("");
+    this.setInitPageStore();
+  }
 }
