@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./defaulters.component.css']
 })
 export class DefaultersComponent implements OnInit {
-
+  pageV!:number;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  page(page:number){
+    //console.log(page);
+    this.pageV=page;
   }
 
 }

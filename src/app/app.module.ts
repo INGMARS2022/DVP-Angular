@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthinterceptorService } from './security/authinterceptor.service';
 import { UiModule } from './ui/ui.module';
+import { StoreModule } from '@ngrx/store';
+import { viewDefaulterReducer } from './redux/viewdefaulters.reducer';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,10 @@ import { UiModule } from './ui/ui.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    UiModule
+    UiModule,
+    StoreModule.forRoot({
+      viewdefaulters : viewDefaulterReducer
+    }, {})
   ],
   exports:[
   ],

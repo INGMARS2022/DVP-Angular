@@ -10,6 +10,10 @@ export interface User{
     email:    string,
     name:     string
 }
+export interface PaginationDefaulters{
+    totalElements : number,
+    content : Array<Defaulters>
+}
 export interface Defaulters {
     id:                    number;
     customerAccount:       null | string;
@@ -44,4 +48,20 @@ export interface Defaulters {
     brmBalanceForDue:      null | string;
     brmAgeOfDebt:          null | string;
     origin:                null | string;
+}
+export interface viewDefaultersStore{
+    search: viewDefaultersStoreSsearch
+    results?: Array<Defaulters>,
+    paginator?:ViewPaginator,
+}
+export interface viewDefaultersStoreSsearch{
+    client? : string,
+    billing?: string,
+    service?: string
+}
+export interface ViewPaginator{
+    totalResults:      number,
+    initialPage:       number,
+    finalPage:         number,
+    actualPage?:        number,
 }

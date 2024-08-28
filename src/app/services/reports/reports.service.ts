@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Defaulters } from 'src/app/interface/interface';
+import { Defaulters, PaginationDefaulters } from 'src/app/interface/interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,8 +13,8 @@ export class ReportsService {
 
   constructor( private http:HttpClient) { }
 
-  defaulters(){
-    const url=`${this.baseUrl}reports/defaulters`;
-    return this.http.get<Array<Defaulters>>(url)
+  defaulters(page:number,client:string,billing:string,service:string){
+    const url=`${this.baseUrl}reports/defaulters/${page}/${client}/${billing}/${service}`;
+    return this.http.get<PaginationDefaulters>(url)
   }
 }
