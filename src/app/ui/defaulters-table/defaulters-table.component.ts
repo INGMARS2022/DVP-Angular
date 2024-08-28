@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { viewDefaultersStore } from 'src/app/interface/interface';
+import { searchDefaultersStore, viewDefaultersStore } from 'src/app/interface/interface';
 
 @Component({
   selector: 'app-defaulters-table',
@@ -9,19 +9,19 @@ import { viewDefaultersStore } from 'src/app/interface/interface';
   styleUrls: ['./defaulters-table.component.css']
 })
 export class DefaultersTableComponent implements OnInit {
-  viewDefaulters$:Observable<viewDefaultersStore>;
-  viewDefaultersStore$?: viewDefaultersStore;
+  searchDefaulters$:Observable<searchDefaultersStore>;
+  searchDefaultersStore$?: searchDefaultersStore;
   constructor(
-    private storeDefaulters:Store<{viewdefaulters:viewDefaultersStore}>,
+    private searchDefaulters:Store<{searchdefaulters:searchDefaultersStore}>,
   ) { 
-    this.viewDefaulters$=storeDefaulters.select('viewdefaulters');
+    this.searchDefaulters$ = searchDefaulters.select('searchdefaulters');
   }
 
   ngOnInit(): void {
-    this.viewDefaulters$.subscribe({
+    this.searchDefaulters$.subscribe({
       next: res=>{
         //console.log(res);
-        this.viewDefaultersStore$=res;
+        this.searchDefaultersStore$=res;
       }
     });
     /*this.search$.subscribe({

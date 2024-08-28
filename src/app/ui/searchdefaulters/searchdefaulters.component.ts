@@ -35,7 +35,7 @@ export class SearchdefaultersComponent implements OnInit {
   ngOnInit(): void {
     this.searchDefaulters$.subscribe({
       next: res=>{
-        console.log(res);
+        //console.log(res);
         this.searchDefaultersStore$ = res;
       }
     });
@@ -54,8 +54,8 @@ export class SearchdefaultersComponent implements OnInit {
     this.search();
   }
   searchBtn(){
-    this.setInitPageStore();
-    this.search();
+    //this.setInitPageStore();
+    this.newSearch();
   }
   search(){
     this.reportsService.defaulters(
@@ -65,12 +65,28 @@ export class SearchdefaultersComponent implements OnInit {
       this.searchDefaultersStore$!.service!,
     ).subscribe({
       next: res=>{
-        console.log(res.content);
+        //console.log(res.content);
           this.setSearchStore(res);
       },
       error: err=>{
       }
     })
+  }
+  newSearch(){
+    this.reportsService.defaulters(
+      this.getPage()-1,
+      this.getFormData("client"),
+      this.getFormData("billing"),
+      this.getFormData("service"),
+    ).subscribe({
+      next: res=>{
+        //console.log(res.content);
+          this.setSearchStore(res);
+      },
+      error: err=>{
+      }
+    })
+
   }
   getFormData(name:string):string{
     if(this.form.get(name)!.value == ""){return "null";}
@@ -87,6 +103,7 @@ export class SearchdefaultersComponent implements OnInit {
         actualPage:this.getPage(),
         finalPage:this.getCalcPage(res.totalElements)
       },
+      results: res.content
     };
     this.searchDefaulters.dispatch(savesearchdefaulters({obj:obj}));
   }
@@ -106,5 +123,6 @@ export class SearchdefaultersComponent implements OnInit {
     this.form.get("billing")!.setValue("");
     this.form.get("service")!.setValue("");
     this.setInitPageStore();
+    this.newSearch();
   }
 }

@@ -54,6 +54,7 @@ export interface searchDefaultersStore{
     billing?:string,
     service?:string,
     paginator: ViewPaginator,
+    results: Array<Defaulters>,
 }
 export interface viewDefaultersStore{
     search: viewDefaultersStoreSsearch

@@ -12,6 +12,7 @@ export const initialState:searchDefaultersStore={
         actualPage:1,
         finalPage:1
     },
+    results:[]
 };
 export const searchDefaulterReducer = createReducer(
     initialState,
@@ -27,6 +28,7 @@ export const searchDefaulterReducer = createReducer(
                 finalPage:props.obj.paginator.finalPage
                 
             },
+            results:props.obj.results
         }
         return obj;
     }),

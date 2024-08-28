@@ -1,23 +1,33 @@
 <div class="table">
     <table>
         <tr>
-            <th>Id técnico</th>
-            <th>Nombre</th>
-            <th>Región</th>
-            <th>Perfil</th>
-            <th>Activo</th>
-            <th>Login APP</th>
-            <th>Detalle</th>
+            <th>Id</th>
+            <th>CRM</th>
+            <th>C. Cliente</th>
+            <th>C. Facturación</th>
+            <th>C. Servicio</th>
+            <th>C. Cliente Clase</th>
+            <th>VID</th>
+            <th>Estatus C. Cliente</th>
+            <th>Nombre C. Cliente</th>
+            <th>BRM Status</th>
+            <th>BRM Segmento</th>
+            <th>BRM Alta</th>
         </tr>
         <tbody>
-            <tr>
-                <td>{{""}}</td>
-                <td>{{""}}</td>
-                <td>{{""}}</td>
-                <td>{{""}}</td>
-                <td>{{""}}</td>
-                <td>{{""}}</td>
-                <td>{{""}}</td>                
+            <tr *ngFor="let item of searchDefaultersStore$?.results">
+                <td>{{item.id}}</td>
+                <td>{{item.origin}}</td>
+                <td>{{item.customerAccount}}</td>
+                <td>{{item.billingAccount}}</td>
+                <td>{{item.serviceAccount}}</td>
+                <td>{{item.customerClientClass}}</td>
+                <td>{{item.videoAssets}}-{{item.voiceAssets}}-{{item.dataAssets}}</td>    
+                <td>{{item.customerStatus}}</td>
+                <td>{{item.customername}}</td>   
+                <td>{{item.brmStatusAccount}}</td>         
+                <td>{{item.brmSegment}}</td> 
+                <td>{{item.brmChargeDateAccount}}</td> 
             </tr> 
         </tbody>
     </table>
