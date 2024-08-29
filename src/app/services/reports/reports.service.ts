@@ -23,4 +23,9 @@ export class ReportsService {
     console.log(url);
     return this.http.get<Defaulters>(url)
   }
+  defaultersAll(){
+    const url=`${this.baseUrl}reports/defaultersAll`;
+    console.log(url);
+    return this.http.get<Array<Defaulters>>(url)
+  }
 }

@@ -128,6 +128,13 @@ export class SearchdefaultersComponent implements OnInit {
     this.newSearch();
   }
   down(){
-    this.xlsService.generateXLS(this.searchDefaultersStore$?.results??[]);
+    this.reportsService.defaultersAll().subscribe({
+      next: res=>{
+        //console.log(res.content);
+        this.xlsService.generateXLS(res);
+      },
+      error: err=>{
+      }
+    })
   }
 }
