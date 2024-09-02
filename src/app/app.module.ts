@@ -10,6 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import { viewDefaulterReducer } from './redux/viewdefaulters.reducer';
 import { searchDefaulterReducer } from './redux/defaulters/searchdefaulters.reducer';
 import { pageDefaulterReducer } from './redux/defaulters/pagedefaulters.reducer';
+import { viewRevenueReducer } from './redux/viewrevenue.reducer';
+import { searchRevenueReducer } from './redux/revenue/searchrevenue.reducer';
+import { pageRevenueReducer } from './redux/revenue/pagerevenue.reducer';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { pageDefaulterReducer } from './redux/defaulters/pagedefaulters.reducer'
     StoreModule.forRoot({
       pagedefaulters : pageDefaulterReducer,
       searchdefaulters : searchDefaulterReducer,
-      viewdefaulters : viewDefaulterReducer
+      viewdefaulters : viewDefaulterReducer,
+      pagerevenue : pageRevenueReducer,
+      searchrevenue : searchRevenueReducer,
+      viewrevenue : viewRevenueReducer
     }, {})
   ],
   exports:[

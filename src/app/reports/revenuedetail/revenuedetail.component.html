@@ -1,0 +1,109 @@
+<app-navdata></app-navdata>
+<app-nav></app-nav>
+<div class="main-all" *ngIf="revenue">
+    <div class="main-data">
+        <div class="data-row">
+            <p>Cuenta Cliente</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{revenue.cuentacliente}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>CRM</p>
+                <p>{{revenue.origin}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{revenue.nombre}}</p>
+            </div>
+            <!-- <div class="data-row-item">
+                <p>Estatus</p>
+                <p>{{revenue.customerStatus}}</p>
+            </div> -->
+            <!-- <div class="data-row-item">
+                <p>Clase</p>
+                <p>{{revenue.customerClientClass}}</p>
+            </div> -->
+        </div>
+        <div class="data-row">
+            <p>Cuenta Facturación</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{revenue.cuentafacturacion}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{revenue.nombre}}</p>
+            </div>
+            <!-- <div class="data-row-item">
+                <p>Subtipo</p>
+                <p>{{revenue.billingSubtype}}</p>
+            </div> -->
+            <!-- <div class="data-row-item">
+                <p>Email</p>
+                <p>{{revenue.billingEmail}}</p>
+            </div> -->
+        </div>
+        <div class="data-row">
+            <!-- <div class="data-row-item">
+                <p>Método de pago</p>
+                <p>{{revenue.billingPaymentMethod}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{revenue.nombre}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Ciclo</p>
+                <p>{{revenue.billingCycle}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Primera</p>
+                <p>{{revenue.billingFirstBill}}</p>
+            </div> -->
+            <div class="data-row-item">
+                <p>RPT</p>
+                <p>{{revenue.rpt}}</p>
+            </div>
+        </div>      
+        <div class="data-row">
+            <p>BRM</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{revenue.brmAccount}}</p>
+            </div>          
+            <div class="data-row-item">
+                <p>Ultimo Pago</p>
+                <p>{{revenue.fechaUltimoPago}}</p>
+            </div>    
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Dias de Morosidad</p>
+                <p>{{revenue.diasMorosidad}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Saldo Vencido</p>
+                <p>{{revenue.saldoVencido}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Productos</p>
+                <p>{{revenue.productos}}</p>
+            </div>
+            <!-- <div class="data-row-item">
+                <p>Saldo por Vencer</p>
+                <p>{{revenue.brmBalanceForDue}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Atiguedad Deuda</p>
+                <p>{{revenue.brmAgeOfDebt}}</p>
+            </div> -->
+        </div>
+    </div>
+</div>

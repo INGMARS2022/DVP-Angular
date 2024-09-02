@@ -72,3 +72,36 @@ export interface ViewPaginator{
     actualPage:        number,
     finalPage: number;
 }
+export interface PaginationRevenue{
+    totalElements : number,
+    content : Array<Revenue>
+}
+export interface Revenue {
+    id:                    number;
+    cuentacliente:         null | string;
+    cuentafacturacion:     null | string;
+    nombre:                null | string;
+    productos:             null | string;
+    fechaUltimoPago:       null | string;
+    diasMorosidad:         null | string;
+    saldoVencido:          null | string;
+    rpt:                   null | string;
+    brmAccount:            null | string;
+    origin:                null | string;  
+}
+
+export interface searchRevenueStore{
+    client?: string,
+    billing?:string,
+    paginator: ViewPaginator,
+    results: Array<Revenue>,
+}
+export interface viewRevenueStore{
+    search: viewRevenueStoreSsearch
+    results?: Array<Revenue>,
+    paginator?:ViewPaginator,
+}
+export interface viewRevenueStoreSsearch{
+    client? : string,
+    billing?: string,
+}

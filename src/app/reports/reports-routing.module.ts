@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultersComponent } from './defaulters/defaulters.component';
 import { LayoutComponent } from './layout/layout.component';
 import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.component';
+import { RevenueComponent } from './revenue/revenue.component';
+import { RevenuedetailComponent } from './revenuedetail/revenuedetail.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,14 @@ const routes: Routes = [
       {
         path:'layout',
         component:LayoutComponent,
+      },
+      {
+        path:'revenue',
+        component:RevenueComponent,
+      },
+      {
+        path:'revenue/:id',
+        component:RevenuedetailComponent,
       },
       {
         path:'**',

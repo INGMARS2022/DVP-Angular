@@ -9,6 +9,8 @@ import { DefaultersTableComponent } from './defaulters-table/defaulters-table.co
 import { PaginatorComponent } from './paginator/paginator.component';
 import { SearchdefaultersComponent } from './searchdefaulters/searchdefaulters.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RevenueTableComponent } from './revenue-table/revenue-table.component';
+import { SearchrevenueComponent } from './searchrevenue/searchrevenue.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavComponent,
     DefaultersTableComponent,
     PaginatorComponent,
-    SearchdefaultersComponent
+    SearchdefaultersComponent,
+    RevenueTableComponent,
+    SearchrevenueComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DefaultersTableComponent,
     PaginatorComponent,
     SearchdefaultersComponent,
+    RevenueTableComponent,
+    SearchrevenueComponent
   ],
 })
 export class UiModule { }
