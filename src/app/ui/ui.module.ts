@@ -9,6 +9,9 @@ import { DefaultersTableComponent } from './defaulters-table/defaulters-table.co
 import { PaginatorComponent } from './paginator/paginator.component';
 import { SearchdefaultersComponent } from './searchdefaulters/searchdefaulters.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutTableComponent } from './layout-table/layout-table.component';
+import { SearchlayoutComponent } from './searchlayout/searchlayout.component';
+import { PaginatorlayoutComponent } from './paginatorlayout/paginatorlayout.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavComponent,
     DefaultersTableComponent,
     PaginatorComponent,
-    SearchdefaultersComponent
+    SearchdefaultersComponent,
+    LayoutTableComponent,
+    SearchlayoutComponent,
+    PaginatorlayoutComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +38,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     DefaultersTableComponent,
     PaginatorComponent,
     SearchdefaultersComponent,
+    LayoutTableComponent,
+    SearchlayoutComponent,
+    PaginatorlayoutComponent
   ],
 })
 export class UiModule { }

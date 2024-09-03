@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultersComponent } from './defaulters/defaulters.component';
 import { LayoutComponent } from './layout/layout.component';
 import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.component';
+import { LayoutdetailComponent } from './layoutdetail/layoutdetail.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path:'layout',
         component:LayoutComponent,
+      },
+      {
+        path:'layout/:id',
+        component:LayoutdetailComponent,
       },
       {
         path:'**',

@@ -1,0 +1,227 @@
+<app-navdata></app-navdata>
+<app-nav></app-nav>
+<div class="main-all" *ngIf="layout">
+    <div class="main-data">
+        <div class="data-row">
+            <p>Cuenta Cliente</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{layout.customerAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Número Cuenta</p>
+                <p>{{layout.customerAccountNumber}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>CRM</p>
+                <p>{{layout.origin}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{layout.customername}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Estatus</p>
+                <p>{{layout.customerStatus}}</p>
+            </div>
+            <!--<div class="data-row-item">
+                <p>Clase</p>
+                <p>{{layout.customerClientClass}}</p>
+            </div>-->
+        </div>
+        <div class="data-row">
+            <p>Cuenta Facturación</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{layout.billingAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{layout.billingBusinessName}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Subtipo</p>
+                <p>{{layout.billingSubtype}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Email</p>
+                <p>{{layout.billingEmail}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Método de pago</p>
+                <p>{{layout.billingPaymentMethod}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Ciclo</p>
+                <p>{{layout.billingCycle}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Vencimiento</p>
+                <p>{{layout.billingDueDate}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Primera</p>
+                <p>{{layout.billingFirstBill}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>RPT</p>
+                <p>{{layout.billingRpt}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Teléfono Principal</p>
+                <p>{{layout.billingPhoneMain}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Teléfono Casa</p>
+                <p>{{layout.billingPhoneHouse}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Teléfono Movil</p>
+                <p>{{layout.billingPhoneMovil}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Productos</p>
+                <p>{{layout.billingProducts}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>Cuenta Servicio</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{layout.serviceAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Ciudad</p>
+                <p>{{layout.serviceCity}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Dirección</p>
+                <p>{{layout.serviceAddress}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Calle</p>
+                <p>{{layout.serviceStreet}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Colonia</p>
+                <p>{{layout.serviceColony}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Latitud</p>
+                <p>{{layout.serviceLat}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Longitud</p>
+                <p>{{layout.serviceLon}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Código Postal</p>
+                <p>{{layout.servicePostalCode}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Estado</p>
+                <p>{{layout.serviceEstate}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Número Exterior</p>
+                <p>{{layout.serviceNumber}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Número Interior</p>
+                <p>{{layout.serviceInterNumber}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Entre calle 1</p>
+                <p>{{layout.serviceInterStreet1}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Entre calle 2</p>
+                <p>{{layout.serviceInterStreet2}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>BRM</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{layout.brmAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Segmento</p>
+                <p>{{layout.brmSegment}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Estatus</p>
+                <p>{{layout.brmStatusAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Alta</p>
+                <p>{{layout.brmChargeDateAccount}}</p>
+            </div> 
+            <div class="data-row-item">
+                <p>Telefono principal</p>
+                <p>{{layout.brmPhoneMain}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Ultimo Pago</p>
+                <p>{{layout.brmLastPayDate}}</p>
+            </div>    
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Total Ultima Factura</p>
+                <p>{{layout.brmTLBilling}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Saldo total</p>
+                <p>{{layout.brmTBalance}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Saldo Vencido</p>
+                <p>{{layout.brmBalanceDue}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Saldo por Vencer</p>
+                <p>{{layout.brmBalanceForDue}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Atiguedad Deuda</p>
+                <p>{{layout.brmAgeOfDebt}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>VIT</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Video</p>
+                <p>{{layout.videoAssets}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Datos</p>
+                <p>{{layout.dataAssets}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Voz</p>
+                <p>{{layout.voiceAssets}}</p>
+            </div>
+        </div>
+    </div>
+</div>

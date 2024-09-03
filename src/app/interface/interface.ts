@@ -14,6 +14,10 @@ export interface PaginationDefaulters{
     totalElements : number,
     content : Array<Defaulters>
 }
+export interface PaginationLayout{
+    totalElements : number,
+    content : Array<Layout>
+}
 export interface Defaulters {
     id:                    number;
     customerAccount:       null | string;
@@ -49,6 +53,55 @@ export interface Defaulters {
     brmAgeOfDebt:          null | string;
     origin:                null | string;
 }
+export interface Layout {
+    id:                    number;
+    customerAccount:       null | string;
+    customerStatus:        null | string;
+    customerClientClass:   null | string;
+    customerAccountNumber: null | string;
+    customername:          null | string;
+    billingAccount:        null | string;
+    billingBusinessName:   null | string;
+    billingSubtype:        null | string;
+    billingEmail:          null | string;
+    billingPaymentMethod:  null | string;
+    billingCycle:          null | string;
+    billingDueDate:        null | string;
+    billingFirstBill:      null | string;
+    billingRpt:            null | string;
+    serviceAccount:        null | string;
+    serviceCity:           null | string;
+    serviceAddress:        null | string;
+    videoAssets:           null | string;
+    dataAssets:            null | string;
+    voiceAssets:           null | string;
+    brmAccount:            null | string;
+    brmSegment:            null | string;
+    brmStatusAccount:      null | string;
+    brmChargeDateAccount:  null | string;
+    brmPhoneMain:          null | string;
+    brmLastPayDate:        null | string;
+    brmTLBilling:          null | string;
+    brmTBalance:           null | string;
+    brmBalanceDue:         null | string;
+    brmBalanceForDue:      null | string;
+    brmAgeOfDebt:          null | string;
+    origin:                null | string;
+    billingPhoneMain:      null | string;
+    billingPhoneHouse:     null | string;
+    billingPhoneMovil:     null | string;
+    billingProducts:       null | string;
+    serviceStreet:         null | string;
+    serviceColony:         null | string;
+    serviceLat:            null | string;
+    serviceLon:            null | string;
+    servicePostalCode:     null | string;
+    serviceEstate:         null | string;
+    serviceNumber:         null | string;
+    serviceInterStreet1:   null | string;
+    serviceInterStreet2:   null | string;
+    serviceInterNumber:    null | string;
+}
 export interface searchDefaultersStore{
     client?: string,
     billing?:string,
@@ -71,4 +124,11 @@ export interface ViewPaginator{
     initialPage:       number,
     actualPage:        number,
     finalPage: number;
+}
+export interface searchLayoutStore{
+    client?: string,
+    billing?:string,
+    service?:string,
+    paginator: ViewPaginator,
+    results: Array<Layout>,
 }

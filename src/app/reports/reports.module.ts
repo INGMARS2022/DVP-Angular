@@ -6,6 +6,7 @@ import { DefaultersComponent } from './defaulters/defaulters.component';
 import { UiModule } from "../ui/ui.module";
 import { LayoutComponent } from './layout/layout.component';
 import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.component';
+import { LayoutdetailComponent } from './layoutdetail/layoutdetail.component';
 
 
 
@@ -13,7 +14,8 @@ import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.comp
   declarations: [
     DefaultersComponent,
     LayoutComponent,
-    DefaulterdetailComponent
+    DefaulterdetailComponent,
+    LayoutdetailComponent
   ],
   imports: [
     CommonModule,
