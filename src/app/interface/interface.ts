@@ -102,6 +102,25 @@ export interface Layout {
     serviceInterStreet2:   null | string;
     serviceInterNumber:    null | string;
 }
+export interface Pay {
+    id:               number;
+    customerAccount:  null | string;
+    customerName:     null | string;
+    customerRpt:      null | string;
+    billingProducts:  null | string;
+    billingAccountId: null | string;
+    billingAccount:   null | string;
+    brmAccount:       null | string;
+    brmBusinessName:  null | string;
+    brmPayDate:       null | string;
+    brmOriginPay:     null | string;
+    brmTotalPay:      null | string;
+    brmCurrency:      null | string;
+    brmTotalBill:     null | string;
+    brmNumberBill:    null | string;
+    brmSeriesBill:    null | string;
+    origin:           null | string;
+}
 export interface searchDefaultersStore{
     client?: string,
     billing?:string,
@@ -114,6 +133,7 @@ export interface viewDefaultersStore{
     results?: Array<Defaulters>,
     paginator?:ViewPaginator,
 }
+
 export interface viewDefaultersStoreSsearch{
     client? : string,
     billing?: string,
@@ -131,4 +151,11 @@ export interface searchLayoutStore{
     service?:string,
     paginator: ViewPaginator,
     results: Array<Layout>,
+}
+export interface searchPayStore{
+    client?: string,
+    billing?:string,
+    service?:string,
+    paginator: ViewPaginator,
+    results: Array<Pay>,
 }

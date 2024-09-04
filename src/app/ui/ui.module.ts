@@ -12,6 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutTableComponent } from './layout-table/layout-table.component';
 import { SearchlayoutComponent } from './searchlayout/searchlayout.component';
 import { PaginatorlayoutComponent } from './paginatorlayout/paginatorlayout.component';
+import { PaginatorpayComponent } from './paginatorpay/paginatorpay.component';
+import { SearchpayComponent } from './searchpay/searchpay.component';
+import { PayTableComponent } from './pay-table/pay-table.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { PaginatorlayoutComponent } from './paginatorlayout/paginatorlayout.comp
     SearchdefaultersComponent,
     LayoutTableComponent,
     SearchlayoutComponent,
-    PaginatorlayoutComponent
+    PaginatorlayoutComponent,
+    PaginatorpayComponent,
+    SearchpayComponent,
+    PayTableComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +46,10 @@ import { PaginatorlayoutComponent } from './paginatorlayout/paginatorlayout.comp
     SearchdefaultersComponent,
     LayoutTableComponent,
     SearchlayoutComponent,
-    PaginatorlayoutComponent
+    PaginatorlayoutComponent,
+    PaginatorpayComponent,
+    SearchpayComponent,
+    PayTableComponent
   ],
 })
 export class UiModule { }
