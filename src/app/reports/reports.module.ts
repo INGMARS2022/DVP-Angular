@@ -7,6 +7,8 @@ import { UiModule } from "../ui/ui.module";
 import { LayoutComponent } from './layout/layout.component';
 import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.component';
 import { LayoutdetailComponent } from './layoutdetail/layoutdetail.component';
+import { PayComponent } from './pay/pay.component';
+import { PaydetailComponent } from './paydetail/paydetail.component';
 
 
 
@@ -15,7 +17,9 @@ import { LayoutdetailComponent } from './layoutdetail/layoutdetail.component';
     DefaultersComponent,
     LayoutComponent,
     DefaulterdetailComponent,
-    LayoutdetailComponent
+    LayoutdetailComponent,
+    PayComponent,
+    PaydetailComponent
   ],
   imports: [
     CommonModule,

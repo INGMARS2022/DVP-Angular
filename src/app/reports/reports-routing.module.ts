@@ -4,6 +4,8 @@ import { DefaultersComponent } from './defaulters/defaulters.component';
 import { LayoutComponent } from './layout/layout.component';
 import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.component';
 import { LayoutdetailComponent } from './layoutdetail/layoutdetail.component';
+import { PayComponent } from './pay/pay.component';
+import { PaydetailComponent } from './paydetail/paydetail.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,14 @@ const routes: Routes = [
       {
         path:'layout/:id',
         component:LayoutdetailComponent,
+      },
+      {
+        path:'pay',
+        component:PayComponent,
+      },
+      {
+        path:'pay/:id',
+        component:PaydetailComponent,
       },
       {
         path:'**',

@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { PaginationPay, searchPayStore } from 'src/app/interface/interface';
+import { initialpagepay } from 'src/app/redux/pay/pagepay.actions';
+import { initialsearchpay, savesearchpay } from 'src/app/redux/pay/searchpay.actions';
+import { ReportsService } from 'src/app/services/reports/reports.service';
+import { XlsService } from 'src/app/services/xls/xls.service';
 
 @Component({
   selector: 'app-searchpay',
@@ -7,9 +15,128 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchpayComponent implements OnInit {
 
-  constructor() { }
+  pagePay$:Observable<number>;
+  pagePayStore$?: number;
+  searchPay$:Observable<searchPayStore>;
+  searchPayStore$?: searchPayStore;
+  form:FormGroup= this.fb.group({
+    client:   ['',[]],
+    billing:  ['',[]],
+    service:  ['',[]],
+  })
+  constructor(
+    private fb:FormBuilder,
+    private reportsService:ReportsService,
+    private xlsService:XlsService,
+    private pagePay:Store<{pagepay:number}>,
+    private searchPay:Store<{searchpay:searchPayStore}>,
+  ) { 
+    this.pagePay$ = pagePay.select('pagepay');
+    this.searchPay$ = searchPay.select('searchpay');
+  }
 
   ngOnInit(): void {
+    this.searchPay$.subscribe({
+      next: res=>{
+        //console.log(res);
+        this.searchPayStore$ = res;
+      }
+    });
+    this.pagePay$.subscribe({
+      next: res=>{
+        console.log(res);
+        this.pagePayStore$ = res;
+        this.searchPage();
+      }
+    });
+  }
+  getPage():number{
+    return this.pagePayStore$!;
+  }
+  searchPage(){
+    this.search();
+  }
+  searchBtn(){
+    //this.setInitPageStore();
+    this.newSearch();
+  }
+  search(){
+    this.reportsService.pay(
+      this.getPage()-1,
+      this.searchPayStore$!.client!,
+      this.searchPayStore$!.billing!,
+      this.searchPayStore$!.service!,
+    ).subscribe({
+      next: res=>{
+        //console.log(res.content);
+          this.setSearchStore(res);
+      },
+      error: err=>{
+      }
+    })
+  }
+  newSearch(){
+    this.reportsService.pay(
+      this.getPage()-1,
+      this.getFormData("client"),
+      this.getFormData("billing"),
+      this.getFormData("service"),
+    ).subscribe({
+      next: res=>{
+        //console.log(res.content);
+          this.setSearchStore(res);
+      },
+      error: err=>{
+      }
+    })
+
+  }
+  getFormData(name:string):string{
+    if(this.form.get(name)!.value == ""){return "null";}
+    else{ return this.form.get(name)!.value}
+  }
+  setSearchStore(res:PaginationPay){
+    let obj:searchPayStore= {
+      client: this.getFormData("client"),
+      billing: this.getFormData("billing"),
+      service: this.getFormData("service"),
+      paginator:{
+        totalResults:res.totalElements,
+        initialPage:1,
+        actualPage:this.getPage(),
+        finalPage:this.getCalcPage(res.totalElements)
+      },
+      results: res.content
+    };
+    this.searchPay.dispatch(savesearchpay({obj:obj}));
+  }
+  setInitSearchStore(){
+    this.searchPay.dispatch(initialsearchpay());
+  }
+  setInitPageStore(){
+    this.pagePay.dispatch(initialpagepay());
+  }
+  getCalcPage(total:number):number{
+    if(total<10)return 1;
+    if(total %10 == 0) return total/10;
+    return Math.trunc(total/10) + 1;
+  }
+  clear(){
+    this.form.get("client")!.setValue("");
+    this.form.get("billing")!.setValue("");
+    this.form.get("service")!.setValue("");
+    this.setInitPageStore();
+    this.newSearch();
+  }
+  down(){
+    this.reportsService.layoutAll().subscribe({
+      next: res=>{
+        //console.log(res.content);
+        this.xlsService.generateXLS(res);
+      },
+      error: err=>{
+      }
+    })
   }
 
 }

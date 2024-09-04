@@ -18,6 +18,10 @@ export interface PaginationLayout{
     totalElements : number,
     content : Array<Layout>
 }
+export interface PaginationPay{
+    totalElements : number,
+    content : Array<Pay>
+}
 export interface Defaulters {
     id:                    number;
     customerAccount:       null | string;

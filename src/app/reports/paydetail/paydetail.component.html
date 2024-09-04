@@ -1,0 +1,76 @@
+<app-navdata></app-navdata>
+<app-nav></app-nav>
+<div class="main-all" *ngIf="pay">
+    <div class="main-data">
+        <div class="data-row">
+            <p>Cuenta Cliente</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{pay.customerAccount}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>CRM</p>
+                <p>{{pay.origin}}</p>
+            </div>
+            <!--<div class="data-row-item">
+                <p>Clase</p>
+                <p>{{pay.customerClientClass}}</p>
+            </div>-->
+        </div>
+        <div class="data-row">
+            <p>Cuenta Facturación</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{pay.billingAccount}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            
+        </div>
+        <div class="data-row">
+            
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Productos</p>
+                <p>{{pay.billingProducts}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>Cuenta Servicio</p>
+        </div>
+        <div class="data-row">
+            
+        </div>
+        <div class="data-row">
+            
+        </div>
+        <div class="data-row">
+            
+        </div>
+        <div class="data-row">
+            <p>BRM</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{pay.brmAccount}}</p>
+            </div>
+            
+        </div>
+        <div class="data-row">
+            
+        </div>
+        <div class="data-row">
+            <p>VIT</p>
+        </div>
+        <div class="data-row">
+            
+        </div>
+    </div>
+</div>
+
