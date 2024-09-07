@@ -22,6 +22,7 @@ export class SearchdefaultersComponent implements OnInit {
     client:   ['',[]],
     billing:  ['',[]],
     service:  ['',[]],
+    origin:  ['',[]],
   })
   constructor(
     private fb:FormBuilder,
@@ -65,6 +66,7 @@ export class SearchdefaultersComponent implements OnInit {
       this.searchDefaultersStore$!.client!,
       this.searchDefaultersStore$!.billing!,
       this.searchDefaultersStore$!.service!,
+      this.searchDefaultersStore$!.origin!,
     ).subscribe({
       next: res=>{
         //console.log(res.content);
@@ -76,14 +78,17 @@ export class SearchdefaultersComponent implements OnInit {
   }
   newSearch(){
     this.reportsService.defaulters(
-      this.getPage()-1,
+      //this.getPage()-1,
+      0,
       this.getFormData("client"),
       this.getFormData("billing"),
       this.getFormData("service"),
+      this.getFormData("origin"),
     ).subscribe({
       next: res=>{
         //console.log(res.content);
           this.setSearchStore(res);
+          this.setSearchPage();
       },
       error: err=>{
       }
@@ -99,15 +104,20 @@ export class SearchdefaultersComponent implements OnInit {
       client: this.getFormData("client"),
       billing: this.getFormData("billing"),
       service: this.getFormData("service"),
+      origin: this.getFormData("origin"),
       paginator:{
         totalResults:res.totalElements,
         initialPage:1,
-        actualPage:this.getPage(),
+        actualPage: 1,
+        //actualPage:this.getPage(),
         finalPage:this.getCalcPage(res.totalElements)
       },
       results: res.content
     };
     this.searchDefaulters.dispatch(savesearchdefaulters({obj:obj}));
+  }
+  setSearchPage(){
+    this.pageDefaulters.dispatch(initialpagedefaulters());
   }
   setInitSearchStore(){
     this.searchDefaulters.dispatch(initialsearchdefaulters());
@@ -124,6 +134,7 @@ export class SearchdefaultersComponent implements OnInit {
     this.form.get("client")!.setValue("");
     this.form.get("billing")!.setValue("");
     this.form.get("service")!.setValue("");
+    this.form.get("origin")!.setValue("");
     this.setInitPageStore();
     this.newSearch();
   }

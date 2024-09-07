@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () => import('./reports/reports.module').then( m => (m.ReportsModule)),
   },
   {
+    path:'logs',
+    canActivate:[TokenGuard],
+    loadChildren: () => import('./logs/logs.module').then( m => (m.LogsModule)),
+  },
+  {
     path:'**',
     redirectTo:'auth',
   }

@@ -131,7 +131,7 @@ export class SearchlayoutComponent implements OnInit {
     this.reportsService.layoutAll().subscribe({
       next: res=>{
         //console.log(res.content);
-        this.xlsService.generateXLS(res);
+        this.xlsService.generateXLS([]);
       },
       error: err=>{
       }

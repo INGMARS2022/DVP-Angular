@@ -6,6 +6,7 @@ export const initialState:searchDefaultersStore={
     client:"null",
     billing:"null",
     service:"null",
+    origin:"null",
     paginator:{
         totalResults:0,
         initialPage:1,
@@ -21,6 +22,7 @@ export const searchDefaulterReducer = createReducer(
             client:props.obj.client,
             billing:props.obj.billing,
             service:props.obj.service,
+            origin:props.obj.origin,
             paginator:{
                 totalResults:props.obj.paginator.totalResults,
                 initialPage:props.obj.paginator.initialPage,

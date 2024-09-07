@@ -54,12 +54,12 @@
                 <p>{{defaulter.billingPaymentMethod}}</p>
             </div>
             <div class="data-row-item">
-                <p>Nombre</p>
-                <p>{{defaulter.billingBusinessName}}</p>
-            </div>
-            <div class="data-row-item">
                 <p>Ciclo</p>
                 <p>{{defaulter.billingCycle}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Vencimiento</p>
+                <p>{{defaulter.billingDueDate}}</p>
             </div>
             <div class="data-row-item">
                 <p>Primera</p>
@@ -136,6 +136,20 @@
             <div class="data-row-item">
                 <p>Atiguedad Deuda</p>
                 <p>{{defaulter.brmAgeOfDebt}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>HIT1</p>
+                <p>{{defaulter.hit1?.substring(0,11)}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>HIT3</p>
+                <p>{{defaulter.hit3?.substring(0,11)}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Bucket</p>
+                <p>{{defaulter.bucket}}</p>
             </div>
         </div>
         <div class="data-row">

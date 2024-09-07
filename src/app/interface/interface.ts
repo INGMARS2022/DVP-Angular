@@ -56,6 +56,9 @@ export interface Defaulters {
     brmBalanceForDue:      null | string;
     brmAgeOfDebt:          null | string;
     origin:                null | string;
+    hit1:                  null | string;
+    hit3:                   null | string;
+    bucket:                 null | string;
 }
 export interface Layout {
     id:                    number;
@@ -129,6 +132,7 @@ export interface searchDefaultersStore{
     client?: string,
     billing?:string,
     service?:string,
+    origin?:string,
     paginator: ViewPaginator,
     results: Array<Defaulters>,
 }
@@ -162,4 +166,16 @@ export interface searchPayStore{
     service?:string,
     paginator: ViewPaginator,
     results: Array<Pay>,
+}
+export interface Process {
+    id:        number;
+    idProcess: string;
+    type:      string;
+    step:      string;
+    origen:    string;
+    startP:    Date| null;
+    endP:      Date| null;
+    status:    string;
+    comments:  string | null;
+    error:     string | null;
 }

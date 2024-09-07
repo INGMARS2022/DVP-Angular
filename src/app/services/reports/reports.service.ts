@@ -13,8 +13,8 @@ export class ReportsService {
 
   constructor( private http:HttpClient) { }
 
-  defaulters(page:number,client:string,billing:string,service:string){
-    const url=`${this.baseUrl}reports/defaulters/${page}/${client}/${billing}/${service}`;
+  defaulters(page:number,client:string,billing:string,service:string,origen:string){
+    const url=`${this.baseUrl}reports/defaulters/${page}/${client}/${billing}/${service}/${origen}`;
     console.log(url);
     return this.http.get<PaginationDefaulters>(url)
   }
