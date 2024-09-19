@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
         if(res.jwt){
           this.saveToken(res);
           this.route.navigateByUrl('reports/defaulters');
+          this.loading.showLoading('',false);
         }    
       },
       error: err=>{
