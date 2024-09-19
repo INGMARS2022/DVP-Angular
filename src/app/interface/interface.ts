@@ -22,6 +22,10 @@ export interface PaginationPay{
     totalElements : number,
     content : Array<Pay>
 }
+export interface PaginationRevenue{
+    totalElements : number,
+    content : Array<Revenue>
+}
 export interface Defaulters {
     id:                    number;
     customerAccount:       null | string;
@@ -108,6 +112,7 @@ export interface Layout {
     serviceInterStreet1:   null | string;
     serviceInterStreet2:   null | string;
     serviceInterNumber:    null | string;
+    mora:                  null | string;
 }
 export interface Pay {
     id:               number;
@@ -167,6 +172,13 @@ export interface searchPayStore{
     paginator: ViewPaginator,
     results: Array<Pay>,
 }
+export interface searchRevenueStore{
+    client?: string,
+    billing?:string,
+    service?:string,
+    paginator: ViewPaginator,
+    results: Array<Revenue>,
+}
 export interface Process {
     id:        number;
     idProcess: string;
@@ -178,4 +190,17 @@ export interface Process {
     status:    string;
     comments:  string | null;
     error:     string | null;
+}
+export interface Revenue {
+    id:                number;
+    cuentaCliente:     null | string;
+    cuentaFacturacion: null | string;
+    nombre:            null | string;
+    productos:         null | string;
+    fechaUltimoPago:   null | string;
+    diasMorosidad:     null | string;
+    saldoVencido:      null | string;
+    rpt:               null | string;
+    brmAccount:        null | string;
+    origin:            null | string;
 }

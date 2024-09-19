@@ -1,0 +1,55 @@
+<app-navdata></app-navdata>
+<app-nav></app-nav>
+<div class="main-all" *ngIf="revenue">
+    <div class="main-data">
+        <div class="data-row">
+            <p>Cuenta Cliente</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{revenue.cuentaCliente}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>CRM</p>
+                <p>{{revenue.origin}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Nombre</p>
+                <p>{{revenue.nombre}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>RPT</p>
+                <p>{{revenue.rpt}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>Cuenta Facturación</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Cuenta</p>
+                <p>{{revenue.cuentaFacturacion}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Productos</p>
+                <p>{{revenue.productos}}</p>
+            </div>
+        </div>
+        <div class="data-row">
+            <p>BRM</p>
+        </div>
+        <div class="data-row">
+            <div class="data-row-item">
+                <p>Último pago</p>
+                <p>{{revenue.fechaUltimoPago}}</p>
+            </div>
+            <div class="data-row-item">
+                <p>Saldo vencido</p>
+                <p>{{revenue.saldoVencido}}</p>
+            </div>
+        </div>
+    </div>
+</div>

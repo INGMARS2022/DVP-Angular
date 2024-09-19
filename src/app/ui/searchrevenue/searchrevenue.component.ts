@@ -2,55 +2,55 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { PaginationLayout, searchLayoutStore } from 'src/app/interface/interface';
-import { initialpagelayout } from 'src/app/redux/layout/pagelayout.actions';
-import { initialsearchlayout, savesearchlayout } from 'src/app/redux/layout/searchlayout.actions';
+import { PaginationRevenue, searchRevenueStore } from 'src/app/interface/interface';
+import { initialpagerevenue } from 'src/app/redux/revenue/pagerevenue.actions';
+import { initialsearchrevenue, savesearchrevenue } from 'src/app/redux/revenue/searchrevenue.actions';
 import { ReportsService } from 'src/app/services/reports/reports.service';
 import { XlsService } from 'src/app/services/xls/xls.service';
 
 @Component({
-  selector: 'app-searchlayout',
-  templateUrl: './searchlayout.component.html',
-  styleUrls: ['./searchlayout.component.css']
+  selector: 'app-searchrevenue',
+  templateUrl: './searchrevenue.component.html',
+  styleUrls: ['./searchrevenue.component.css']
 })
-export class SearchlayoutComponent implements OnInit {
-  pageLayout$:Observable<number>;
-  pageLayoutStore$?: number;
-  searchLayout$:Observable<searchLayoutStore>;
-  searchLayoutStore$?: searchLayoutStore;
+export class SearchrevenueComponent implements OnInit {
+
+  pageRevenue$:Observable<number>;
+  pageRevenueStore$?: number;
+  searchRevenue$:Observable<searchRevenueStore>;
+  searchRevenueStore$?: searchRevenueStore;
   form:FormGroup= this.fb.group({
     client:   ['',[]],
     billing:  ['',[]],
-    service:  ['',[]],
   })
   constructor(
     private fb:FormBuilder,
     private reportsService:ReportsService,
     private xlsService:XlsService,
-    private pageLayout:Store<{pagelayout:number}>,
-    private searchLayout:Store<{searchlayout:searchLayoutStore}>,
+    private pageRevenue:Store<{pagerevenue:number}>,
+    private searchRevenue:Store<{searchrevenue:searchRevenueStore}>,
   ) { 
-    this.pageLayout$ = pageLayout.select('pagelayout');
-    this.searchLayout$ = searchLayout.select('searchlayout');
+    this.pageRevenue$ = pageRevenue.select('pagerevenue');
+    this.searchRevenue$ = searchRevenue.select('searchrevenue');
   }
 
   ngOnInit(): void {
-    this.searchLayout$.subscribe({
+    this.searchRevenue$.subscribe({
       next: res=>{
         //console.log(res);
-        this.searchLayoutStore$ = res;
+        this.searchRevenueStore$ = res;
       }
     });
-    this.pageLayout$.subscribe({
+    this.pageRevenue$.subscribe({
       next: res=>{
         console.log(res);
-        this.pageLayoutStore$ = res;
+        this.pageRevenueStore$ = res;
         this.searchPage();
       }
     });
   }
   getPage():number{
-    return this.pageLayoutStore$!;
+    return this.pageRevenueStore$!;
   }
   searchPage(){
     this.search();
@@ -60,11 +60,10 @@ export class SearchlayoutComponent implements OnInit {
     this.newSearch();
   }
   search(){
-    this.reportsService.layout(
+    this.reportsService.revenue(
       this.getPage()-1,
-      this.searchLayoutStore$!.client!,
-      this.searchLayoutStore$!.billing!,
-      this.searchLayoutStore$!.service!,
+      this.searchRevenueStore$!.client!,
+      this.searchRevenueStore$!.billing!,
     ).subscribe({
       next: res=>{
         //console.log(res.content);
@@ -75,11 +74,10 @@ export class SearchlayoutComponent implements OnInit {
     })
   }
   newSearch(){
-    this.reportsService.layout(
+    this.reportsService.revenue(
       this.getPage()-1,
       this.getFormData("client"),
       this.getFormData("billing"),
-      this.getFormData("service"),
     ).subscribe({
       next: res=>{
         //console.log(res.content);
@@ -94,11 +92,10 @@ export class SearchlayoutComponent implements OnInit {
     if(this.form.get(name)!.value == ""){return "null";}
     else{ return this.form.get(name)!.value}
   }
-  setSearchStore(res:PaginationLayout){
-    let obj:searchLayoutStore= {
+  setSearchStore(res:PaginationRevenue){
+    let obj:searchRevenueStore= {
       client: this.getFormData("client"),
       billing: this.getFormData("billing"),
-      service: this.getFormData("service"),
       paginator:{
         totalResults:res.totalElements,
         initialPage:1,
@@ -107,13 +104,13 @@ export class SearchlayoutComponent implements OnInit {
       },
       results: res.content
     };
-    this.searchLayout.dispatch(savesearchlayout({obj:obj}));
+    this.searchRevenue.dispatch(savesearchrevenue({obj:obj}));
   }
   setInitSearchStore(){
-    this.searchLayout.dispatch(initialsearchlayout());
+    this.searchRevenue.dispatch(initialsearchrevenue());
   }
   setInitPageStore(){
-    this.pageLayout.dispatch(initialpagelayout());
+    this.pageRevenue.dispatch(initialpagerevenue());
   }
   getCalcPage(total:number):number{
     if(total<10)return 1;
@@ -123,15 +120,14 @@ export class SearchlayoutComponent implements OnInit {
   clear(){
     this.form.get("client")!.setValue("");
     this.form.get("billing")!.setValue("");
-    this.form.get("service")!.setValue("");
     this.setInitPageStore();
     this.newSearch();
   }
   down(){
-    this.reportsService.layoutAll().subscribe({
+    this.reportsService.revenueAll().subscribe({
       next: res=>{
         //console.log(res.content);
-        this.xlsService.generateLayoutXLS(res);
+        this.xlsService.generateXLS([]);
       },
       error: err=>{
       }

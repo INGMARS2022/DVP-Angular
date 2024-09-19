@@ -9,6 +9,8 @@ import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.comp
 import { LayoutdetailComponent } from './layoutdetail/layoutdetail.component';
 import { PayComponent } from './pay/pay.component';
 import { PaydetailComponent } from './paydetail/paydetail.component';
+import { RevenueComponent } from './revenue/revenue.component';
+import { RevenuedetailComponent } from './revenuedetail/revenuedetail.component';
 
 
 
@@ -19,7 +21,9 @@ import { PaydetailComponent } from './paydetail/paydetail.component';
     DefaulterdetailComponent,
     LayoutdetailComponent,
     PayComponent,
-    PaydetailComponent
+    PaydetailComponent,
+    RevenueComponent,
+    RevenuedetailComponent
   ],
   imports: [
     CommonModule,

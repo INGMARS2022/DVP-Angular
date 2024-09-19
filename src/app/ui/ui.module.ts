@@ -15,6 +15,9 @@ import { PaginatorlayoutComponent } from './paginatorlayout/paginatorlayout.comp
 import { PaginatorpayComponent } from './paginatorpay/paginatorpay.component';
 import { SearchpayComponent } from './searchpay/searchpay.component';
 import { PayTableComponent } from './pay-table/pay-table.component';
+import { SearchrevenueComponent } from './searchrevenue/searchrevenue.component';
+import { RevenueTableComponent } from './revenue-table/revenue-table.component';
+import { PaginatorrevenueComponent } from './paginatorrevenue/paginatorrevenue.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { PayTableComponent } from './pay-table/pay-table.component';
     PaginatorlayoutComponent,
     PaginatorpayComponent,
     SearchpayComponent,
-    PayTableComponent
+    PayTableComponent,
+    SearchrevenueComponent,
+    RevenueTableComponent,
+    PaginatorrevenueComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +55,10 @@ import { PayTableComponent } from './pay-table/pay-table.component';
     PaginatorlayoutComponent,
     PaginatorpayComponent,
     SearchpayComponent,
-    PayTableComponent
+    PayTableComponent,
+    SearchrevenueComponent,
+    RevenueTableComponent,
+    PaginatorrevenueComponent
   ],
 })
 export class UiModule { }

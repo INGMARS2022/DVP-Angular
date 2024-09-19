@@ -14,6 +14,8 @@ import { pageLayoutReducer } from './redux/layout/pagelayout.reducer';
 import { searchLayoutReducer } from './redux/layout/searchlayout.reducer';
 import { searchPayReducer } from './redux/pay/searchpay.reducer';
 import { pagePayReducer } from './redux/pay/pagepay.reducer';
+import { pageRevenueReducer } from './redux/revenue/pagerevenue.reducer';
+import { searchRevenueReducer } from './redux/revenue/searchrevenue.reducer';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { pagePayReducer } from './redux/pay/pagepay.reducer';
       searchlayout : searchLayoutReducer,
       pagepay : pagePayReducer,
       searchpay : searchPayReducer,
+      pagerevenue : pageRevenueReducer,
+      searchrevenue : searchRevenueReducer,
       viewdefaulters : viewDefaulterReducer
     }, {})
   ],

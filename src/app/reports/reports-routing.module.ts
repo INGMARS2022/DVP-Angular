@@ -6,6 +6,8 @@ import { DefaulterdetailComponent } from './defaulterdetail/defaulterdetail.comp
 import { LayoutdetailComponent } from './layoutdetail/layoutdetail.component';
 import { PayComponent } from './pay/pay.component';
 import { PaydetailComponent } from './paydetail/paydetail.component';
+import { RevenueComponent } from './revenue/revenue.component';
+import { RevenuedetailComponent } from './revenuedetail/revenuedetail.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,14 @@ const routes: Routes = [
       {
         path:'pay/:id',
         component:PaydetailComponent,
+      },
+      {
+        path:'revenue',
+        component:RevenueComponent,
+      },
+      {
+        path:'revenue/:id',
+        component:RevenuedetailComponent,
       },
       {
         path:'**',

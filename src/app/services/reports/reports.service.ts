@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Defaulters, Layout, PaginationDefaulters, PaginationLayout, PaginationPay, Pay } from 'src/app/interface/interface';
+import { Defaulters, Layout, PaginationDefaulters, PaginationLayout, PaginationPay, PaginationRevenue, Pay, Revenue } from 'src/app/interface/interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -57,6 +57,21 @@ export class ReportsService {
     const url=`${this.baseUrl}reports/payAll`;
     console.log(url);
     return this.http.get<Array<Pay>>(url)
+  }
+  revenue(page:number,client:string,billing:string){
+    const url=`${this.baseUrl}reports/revenue/${page}/${client}/${billing}`;
+    console.log(url);
+    return this.http.get<PaginationRevenue>(url)
+  }
+  revenueById(id:number){
+    const url=`${this.baseUrl}reports/revenueById/${id}`;
+    console.log(url);
+    return this.http.get<Revenue>(url)
+  }
+  revenueAll(){
+    const url=`${this.baseUrl}reports/revenueAll`;
+    console.log(url);
+    return this.http.get<Array<Revenue>>(url)
   }
   
 }
