@@ -53,24 +53,10 @@ export class PaginatorComponent implements OnInit {
     }
   }
   after(){
-    /*if(this.initialPage>1){
-      this.initialPage=this.initialPage-1;
-      this.page.emit(this.initialPage);
-      this.storeDefaulters.dispatch(paginatorviewdefaulters({obj:this.getObj()}))
-    }*/
+    if(this.initialPage>1){
       this.initialPage=this.initialPage-1;
       this.searchDefaulters.dispatch(savepagedefaulters({page:this.initialPage}))
+    }
   }
-  /*getObj():viewDefaultersStore{
-    return {
-      search:{},
-      paginator:{
-        actualPage:this.actualPage,
-        initialPage:this.initialPage,
-        finalPage:this.finalPage,
-        totalResults:this.viewDefaultersStore$?.paginator?.totalResults??0,
-      }
-    };
-  }*/
 
 }

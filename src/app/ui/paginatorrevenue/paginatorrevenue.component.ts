@@ -53,8 +53,10 @@ export class PaginatorrevenueComponent implements OnInit {
     }
   }
   after(){
+    if(this.initialPage>1){
       this.initialPage=this.initialPage-1;
       this.searchRevenue.dispatch(savepagerevenue({page:this.initialPage}))
+    }
   }
 
 }

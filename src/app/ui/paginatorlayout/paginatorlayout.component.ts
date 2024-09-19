@@ -53,7 +53,9 @@ export class PaginatorlayoutComponent implements OnInit {
     }
   }
   after(){
+    if(this.initialPage>1){
       this.initialPage=this.initialPage-1;
       this.searchLayout.dispatch(savepagelayout({page:this.initialPage}))
+    }
   }
 }
