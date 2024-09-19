@@ -22,6 +22,7 @@ export class SearchlayoutComponent implements OnInit {
     client:   ['',[]],
     billing:  ['',[]],
     service:  ['',[]],
+    origin:  ['',[]],
   })
   constructor(
     private fb:FormBuilder,
@@ -76,7 +77,8 @@ export class SearchlayoutComponent implements OnInit {
   }
   newSearch(){
     this.reportsService.layout(
-      this.getPage()-1,
+      //this.getPage()-1,
+      0,
       this.getFormData("client"),
       this.getFormData("billing"),
       this.getFormData("service"),
@@ -84,6 +86,7 @@ export class SearchlayoutComponent implements OnInit {
       next: res=>{
         //console.log(res.content);
           this.setSearchStore(res);
+          this.setSearchPage();
       },
       error: err=>{
       }
@@ -102,12 +105,16 @@ export class SearchlayoutComponent implements OnInit {
       paginator:{
         totalResults:res.totalElements,
         initialPage:1,
-        actualPage:this.getPage(),
+        actualPage: 1,
+        //actualPage:this.getPage(),
         finalPage:this.getCalcPage(res.totalElements)
       },
       results: res.content
     };
     this.searchLayout.dispatch(savesearchlayout({obj:obj}));
+  }
+  setSearchPage(){
+    this.pageLayout.dispatch(initialpagelayout());
   }
   setInitSearchStore(){
     this.searchLayout.dispatch(initialsearchlayout());

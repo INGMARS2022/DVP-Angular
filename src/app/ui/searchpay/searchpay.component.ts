@@ -77,7 +77,8 @@ export class SearchpayComponent implements OnInit {
   }
   newSearch(){
     this.reportsService.pay(
-      this.getPage()-1,
+      //this.getPage()-1,
+      0,
       this.getFormData("client"),
       this.getFormData("billing"),
       this.getFormData("service"),
@@ -85,6 +86,7 @@ export class SearchpayComponent implements OnInit {
       next: res=>{
         //console.log(res.content);
           this.setSearchStore(res);
+          this.setSearchPage();
       },
       error: err=>{
       }
@@ -103,12 +105,16 @@ export class SearchpayComponent implements OnInit {
       paginator:{
         totalResults:res.totalElements,
         initialPage:1,
-        actualPage:this.getPage(),
+        actualPage: 1,
+        //actualPage:this.getPage(),
         finalPage:this.getCalcPage(res.totalElements)
       },
       results: res.content
     };
     this.searchPay.dispatch(savesearchpay({obj:obj}));
+  }
+  setSearchPage(){
+    this.pagePay.dispatch(initialpagepay());
   }
   setInitSearchStore(){
     this.searchPay.dispatch(initialsearchpay());
@@ -129,10 +135,9 @@ export class SearchpayComponent implements OnInit {
     this.newSearch();
   }
   down(){
-    this.reportsService.layoutAll().subscribe({
+    this.reportsService.payAll().subscribe({
       next: res=>{
-        //console.log(res.content);
-        this.xlsService.generateXLS([]);
+        //this.xlsService.generateLayoutXLS(res);
       },
       error: err=>{
       }

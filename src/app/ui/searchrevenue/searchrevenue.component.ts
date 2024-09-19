@@ -22,6 +22,7 @@ export class SearchrevenueComponent implements OnInit {
   form:FormGroup= this.fb.group({
     client:   ['',[]],
     billing:  ['',[]],
+    service:  ['',[]],
   })
   constructor(
     private fb:FormBuilder,
@@ -75,13 +76,15 @@ export class SearchrevenueComponent implements OnInit {
   }
   newSearch(){
     this.reportsService.revenue(
-      this.getPage()-1,
+      //this.getPage()-1,
+      0,
       this.getFormData("client"),
       this.getFormData("billing"),
     ).subscribe({
       next: res=>{
         //console.log(res.content);
           this.setSearchStore(res);
+          this.setSearchPage();
       },
       error: err=>{
       }
@@ -99,12 +102,16 @@ export class SearchrevenueComponent implements OnInit {
       paginator:{
         totalResults:res.totalElements,
         initialPage:1,
-        actualPage:this.getPage(),
+        actualPage: 1,
+        //actualPage:this.getPage(),
         finalPage:this.getCalcPage(res.totalElements)
       },
       results: res.content
     };
     this.searchRevenue.dispatch(savesearchrevenue({obj:obj}));
+  }
+  setSearchPage(){
+    this.pageRevenue.dispatch(initialpagerevenue());
   }
   setInitSearchStore(){
     this.searchRevenue.dispatch(initialsearchrevenue());
@@ -126,8 +133,7 @@ export class SearchrevenueComponent implements OnInit {
   down(){
     this.reportsService.revenueAll().subscribe({
       next: res=>{
-        //console.log(res.content);
-        this.xlsService.generateXLS([]);
+        //this.xlsService.generateLayoutXLS(res);
       },
       error: err=>{
       }
