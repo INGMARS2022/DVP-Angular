@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { PaginationPay, searchPayStore } from 'src/app/interface/interface';
 import { initialpagepay } from 'src/app/redux/pay/pagepay.actions';
 import { initialsearchpay, savesearchpay } from 'src/app/redux/pay/searchpay.actions';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 import { ReportsService } from 'src/app/services/reports/reports.service';
 import { XlsService } from 'src/app/services/xls/xls.service';
 
@@ -30,6 +31,7 @@ export class SearchpayComponent implements OnInit {
     private xlsService:XlsService,
     private pagePay:Store<{pagepay:number}>,
     private searchPay:Store<{searchpay:searchPayStore}>,
+    private loading:LoadingService,
   ) { 
     this.pagePay$ = pagePay.select('pagepay');
     this.searchPay$ = searchPay.select('searchpay');
@@ -135,11 +137,14 @@ export class SearchpayComponent implements OnInit {
     this.newSearch();
   }
   down(){
+    this.loading.showLoading('Generando reporte',true);
     this.reportsService.payAll().subscribe({
       next: res=>{
         //this.xlsService.generateLayoutXLS(res);
+        this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
   }

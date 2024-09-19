@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { PaginationRevenue, searchRevenueStore } from 'src/app/interface/interface';
 import { initialpagerevenue } from 'src/app/redux/revenue/pagerevenue.actions';
 import { initialsearchrevenue, savesearchrevenue } from 'src/app/redux/revenue/searchrevenue.actions';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 import { ReportsService } from 'src/app/services/reports/reports.service';
 import { XlsService } from 'src/app/services/xls/xls.service';
 
@@ -30,6 +31,7 @@ export class SearchrevenueComponent implements OnInit {
     private xlsService:XlsService,
     private pageRevenue:Store<{pagerevenue:number}>,
     private searchRevenue:Store<{searchrevenue:searchRevenueStore}>,
+    private loading:LoadingService,
   ) { 
     this.pageRevenue$ = pageRevenue.select('pagerevenue');
     this.searchRevenue$ = searchRevenue.select('searchrevenue');
@@ -131,11 +133,14 @@ export class SearchrevenueComponent implements OnInit {
     this.newSearch();
   }
   down(){
+    this.loading.showLoading('Generando reporte',true);
     this.reportsService.revenueAll().subscribe({
       next: res=>{
         //this.xlsService.generateLayoutXLS(res);
+        this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
   }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { PaginationLayout, searchLayoutStore } from 'src/app/interface/interface';
 import { initialpagelayout } from 'src/app/redux/layout/pagelayout.actions';
 import { initialsearchlayout, savesearchlayout } from 'src/app/redux/layout/searchlayout.actions';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 import { ReportsService } from 'src/app/services/reports/reports.service';
 import { XlsService } from 'src/app/services/xls/xls.service';
 
@@ -30,6 +31,7 @@ export class SearchlayoutComponent implements OnInit {
     private xlsService:XlsService,
     private pageLayout:Store<{pagelayout:number}>,
     private searchLayout:Store<{searchlayout:searchLayoutStore}>,
+    private loading:LoadingService,
   ) { 
     this.pageLayout$ = pageLayout.select('pagelayout');
     this.searchLayout$ = searchLayout.select('searchlayout');
@@ -135,12 +137,15 @@ export class SearchlayoutComponent implements OnInit {
     this.newSearch();
   }
   down(){
+    this.loading.showLoading('Generando reporte',true);
     this.reportsService.layoutAll().subscribe({
       next: res=>{
         //console.log(res.content);
         this.xlsService.generateLayoutXLS(res);
+        this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
   }

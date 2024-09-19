@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { PaginationDefaulters, searchDefaultersStore } from 'src/app/interface/interface';
 import { initialpagedefaulters } from 'src/app/redux/defaulters/pagedefaulters.actions';
 import { initialsearchdefaulters, savesearchdefaulters } from 'src/app/redux/defaulters/searchdefaulters.actions';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 import { ReportsService } from 'src/app/services/reports/reports.service';
 import { XlsService } from 'src/app/services/xls/xls.service';
 
@@ -30,6 +31,7 @@ export class SearchdefaultersComponent implements OnInit {
     private xlsService:XlsService,
     private pageDefaulters:Store<{pagedefaulters:number}>,
     private searchDefaulters:Store<{searchdefaulters:searchDefaultersStore}>,
+    private loading:LoadingService,
   ) { 
     this.pageDefaulters$ = pageDefaulters.select('pagedefaulters');
     this.searchDefaulters$ = searchDefaulters.select('searchdefaulters');
@@ -139,12 +141,15 @@ export class SearchdefaultersComponent implements OnInit {
     this.newSearch();
   }
   down(){
+    this.loading.showLoading('Generando reporte',true);
     this.reportsService.defaultersAll().subscribe({
       next: res=>{
         //console.log(res.content);
         this.xlsService.generateXLS(res);
+        this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
   }
