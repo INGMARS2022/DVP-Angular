@@ -17,7 +17,6 @@ export class DefaulterdetailComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe({
       next: res=>{
-        //console.log(res["id"]);
         this.getData(res["id"]);
       },
     });
@@ -26,7 +25,6 @@ export class DefaulterdetailComponent implements OnInit {
     this.reports.defaultersById(id).subscribe({
       next: res=>{
         this.defaulter=res;
-        console.log(res);
       },
     });
   }

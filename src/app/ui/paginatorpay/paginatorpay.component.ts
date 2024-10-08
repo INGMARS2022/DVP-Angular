@@ -35,7 +35,6 @@ export class PaginatorpayComponent implements OnInit {
     });
     this.pagePay$.subscribe({
       next: res=>{
-        console.log(res);
         this.pagePayStore$=res;
         this.initialPage=res;
       }

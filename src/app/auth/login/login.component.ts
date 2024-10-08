@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login, LoginResponse } from 'src/app/interface/interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { FlashService } from 'src/app/services/flash/flash.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private authService:AuthService,
     private loading:LoadingService,
     private route:Router,
+    private flash:FlashService,
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
       error: err=>{
         this.err=err.error.mensaje;
         this.loading.showLoading('',false);
-        //this.flash.showMessage(err.error.mensaje,'danger');
+        this.flash.showMessage(err.error.error,'danger');
       }
     })
   }

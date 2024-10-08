@@ -21,7 +21,6 @@ export class PayTableComponent implements OnInit {
   ngOnInit(): void {
     this.searchPay$.subscribe({
       next: res=>{
-        //console.log(res);
         this.searchPayStore$=res;
       }
     });

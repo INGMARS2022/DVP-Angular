@@ -1,0 +1,41 @@
+<app-navdata></app-navdata>
+<app-nav></app-nav>
+<div class="main-all">
+    <div class="add-user">
+        <form class="search" [formGroup]="form">
+            <p class="label">Agregar Usuario</p>
+            <div class="search-items">
+                <div class="search-item">
+                    <input type="text" type="text" formControlName="name" placeholder="Nombre">
+                </div>
+                <div class="search-item">
+                    <input type="text" type="text" formControlName="user" placeholder="Correo Izzi">
+                </div>
+            </div>
+            <div class="reg" (click)="searchBtn()">
+                <p>Registrar</p>
+            </div>
+        </form>
+    </div>
+    <div class="table">
+        <table>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th style="text-align: center;">Eliminar</th>
+            </tr>
+            <tbody>
+                <tr *ngFor="let item of users">
+                    <td>{{item.email}}</td>
+                    <td>{{item.name}}</td>
+                    <td style="text-align: center;" (click)="delete(item.email)">
+                        <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                          </svg>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

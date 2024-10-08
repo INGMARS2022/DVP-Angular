@@ -40,13 +40,11 @@ export class SearchlayoutComponent implements OnInit {
   ngOnInit(): void {
     this.searchLayout$.subscribe({
       next: res=>{
-        //console.log(res);
         this.searchLayoutStore$ = res;
       }
     });
     this.pageLayout$.subscribe({
       next: res=>{
-        console.log(res);
         this.pageLayoutStore$ = res;
         this.searchPage();
       }
@@ -63,6 +61,7 @@ export class SearchlayoutComponent implements OnInit {
     this.newSearch();
   }
   search(){
+    this.loading.showLoading('Buscando',true);
     this.reportsService.layout(
       this.getPage()-1,
       this.searchLayoutStore$!.client!,
@@ -70,14 +69,16 @@ export class SearchlayoutComponent implements OnInit {
       this.searchLayoutStore$!.service!,
     ).subscribe({
       next: res=>{
-        //console.log(res.content);
           this.setSearchStore(res);
+          this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
   }
   newSearch(){
+    this.loading.showLoading('Buscando',true);
     this.reportsService.layout(
       //this.getPage()-1,
       0,
@@ -86,11 +87,12 @@ export class SearchlayoutComponent implements OnInit {
       this.getFormData("service"),
     ).subscribe({
       next: res=>{
-        //console.log(res.content);
           this.setSearchStore(res);
           this.setSearchPage();
+          this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
 
@@ -140,7 +142,6 @@ export class SearchlayoutComponent implements OnInit {
     this.loading.showLoading('Generando reporte',true);
     this.reportsService.layoutAll().subscribe({
       next: res=>{
-        //console.log(res.content);
         this.xlsService.generateLayoutXLS(res);
         this.loading.showLoading('',false);
       },

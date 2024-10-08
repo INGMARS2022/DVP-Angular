@@ -25,7 +25,6 @@ export class AuthinterceptorService {
     return next.handle(request)
     .pipe(
       catchError(error => {
-        console.log(error);
         if(error.status=='401'){this.route.navigateByUrl('error/401')}
         throw(error)
       }))

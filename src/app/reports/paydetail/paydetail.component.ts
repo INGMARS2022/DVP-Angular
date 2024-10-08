@@ -18,7 +18,6 @@ export class PaydetailComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe({
       next: res=>{
-        //console.log(res["id"]);
         this.getData(res["id"]);
       },
     });
@@ -27,7 +26,6 @@ export class PaydetailComponent implements OnInit {
     this.reports.payById(id).subscribe({
       next: res=>{
         this.pay=res;
-        console.log(res);
       },
     });
   }

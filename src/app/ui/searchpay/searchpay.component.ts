@@ -40,13 +40,11 @@ export class SearchpayComponent implements OnInit {
   ngOnInit(): void {
     this.searchPay$.subscribe({
       next: res=>{
-        //console.log(res);
         this.searchPayStore$ = res;
       }
     });
     this.pagePay$.subscribe({
       next: res=>{
-        console.log(res);
         this.pagePayStore$ = res;
         this.searchPage();
       }
@@ -63,6 +61,7 @@ export class SearchpayComponent implements OnInit {
     this.newSearch();
   }
   search(){
+    this.loading.showLoading('Buscando',true);
     this.reportsService.pay(
       this.getPage()-1,
       this.searchPayStore$!.client!,
@@ -70,14 +69,16 @@ export class SearchpayComponent implements OnInit {
       this.searchPayStore$!.service!,
     ).subscribe({
       next: res=>{
-        //console.log(res.content);
           this.setSearchStore(res);
+          this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
   }
   newSearch(){
+    this.loading.showLoading('Buscando',true);
     this.reportsService.pay(
       //this.getPage()-1,
       0,
@@ -86,11 +87,12 @@ export class SearchpayComponent implements OnInit {
       this.getFormData("service"),
     ).subscribe({
       next: res=>{
-        //console.log(res.content);
           this.setSearchStore(res);
           this.setSearchPage();
+          this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
 
@@ -140,7 +142,7 @@ export class SearchpayComponent implements OnInit {
     this.loading.showLoading('Generando reporte',true);
     this.reportsService.payAll().subscribe({
       next: res=>{
-        //this.xlsService.generateLayoutXLS(res);
+        this.xlsService.generatePayXLS(res);
         this.loading.showLoading('',false);
       },
       error: err=>{

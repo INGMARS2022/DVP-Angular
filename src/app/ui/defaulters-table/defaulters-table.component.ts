@@ -20,7 +20,6 @@ export class DefaultersTableComponent implements OnInit {
   ngOnInit(): void {
     this.searchDefaulters$.subscribe({
       next: res=>{
-        //console.log(res);
         this.searchDefaultersStore$=res;
       }
     });

@@ -21,7 +21,6 @@ export class RevenueTableComponent implements OnInit {
   ngOnInit(): void {
     this.searchRevenue$.subscribe({
       next: res=>{
-        //console.log(res);
         this.searchRevenueStore$=res;
       }
     });

@@ -18,7 +18,6 @@ export class RevenuedetailComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe({
       next: res=>{
-        //console.log(res["id"]);
         this.getData(res["id"]);
       },
     });
@@ -27,7 +26,6 @@ export class RevenuedetailComponent implements OnInit {
     this.reports.revenueById(id).subscribe({
       next: res=>{
         this.revenue=res;
-        console.log(res);
       },
     });
   }

@@ -18,7 +18,6 @@ export class LayoutdetailComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe({
       next: res=>{
-        //console.log(res["id"]);
         this.getData(res["id"]);
       },
     });
@@ -27,7 +26,6 @@ export class LayoutdetailComponent implements OnInit {
     this.reports.layoutById(id).subscribe({
       next: res=>{
         this.layout=res;
-        console.log(res);
       },
     });
   }

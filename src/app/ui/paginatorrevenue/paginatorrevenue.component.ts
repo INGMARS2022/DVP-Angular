@@ -35,7 +35,6 @@ export class PaginatorrevenueComponent implements OnInit {
     });
     this.pageRevenue$.subscribe({
       next: res=>{
-        console.log(res);
         this.pageRevenueStore$=res;
         this.initialPage=res;
       }

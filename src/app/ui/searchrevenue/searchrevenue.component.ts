@@ -40,13 +40,11 @@ export class SearchrevenueComponent implements OnInit {
   ngOnInit(): void {
     this.searchRevenue$.subscribe({
       next: res=>{
-        //console.log(res);
         this.searchRevenueStore$ = res;
       }
     });
     this.pageRevenue$.subscribe({
       next: res=>{
-        console.log(res);
         this.pageRevenueStore$ = res;
         this.searchPage();
       }
@@ -63,20 +61,23 @@ export class SearchrevenueComponent implements OnInit {
     this.newSearch();
   }
   search(){
+    this.loading.showLoading('Buscando',true);
     this.reportsService.revenue(
       this.getPage()-1,
       this.searchRevenueStore$!.client!,
       this.searchRevenueStore$!.billing!,
     ).subscribe({
       next: res=>{
-        //console.log(res.content);
           this.setSearchStore(res);
+          this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
   }
   newSearch(){
+    this.loading.showLoading('Buscando',true);
     this.reportsService.revenue(
       //this.getPage()-1,
       0,
@@ -84,11 +85,12 @@ export class SearchrevenueComponent implements OnInit {
       this.getFormData("billing"),
     ).subscribe({
       next: res=>{
-        //console.log(res.content);
           this.setSearchStore(res);
           this.setSearchPage();
+          this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
 
@@ -136,7 +138,7 @@ export class SearchrevenueComponent implements OnInit {
     this.loading.showLoading('Generando reporte',true);
     this.reportsService.revenueAll().subscribe({
       next: res=>{
-        //this.xlsService.generateLayoutXLS(res);
+        this.xlsService.generateRevenueXLS(res);
         this.loading.showLoading('',false);
       },
       error: err=>{

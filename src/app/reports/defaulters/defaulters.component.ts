@@ -12,7 +12,6 @@ export class DefaultersComponent implements OnInit {
   ngOnInit(): void {
   }
   page(page:number){
-    //console.log(page);
     this.pageV=page;
   }
 

@@ -40,13 +40,11 @@ export class SearchdefaultersComponent implements OnInit {
   ngOnInit(): void {
     this.searchDefaulters$.subscribe({
       next: res=>{
-        //console.log(res);
         this.searchDefaultersStore$ = res;
       }
     });
     this.pageDefaulters$.subscribe({
       next: res=>{
-        console.log(res);
         this.pageDefaultersStore$ = res;
         this.searchPage();
       }
@@ -63,6 +61,7 @@ export class SearchdefaultersComponent implements OnInit {
     this.newSearch();
   }
   search(){
+    this.loading.showLoading('Buscando',true);
     this.reportsService.defaulters(
       this.getPage()-1,
       this.searchDefaultersStore$!.client!,
@@ -71,14 +70,16 @@ export class SearchdefaultersComponent implements OnInit {
       this.searchDefaultersStore$!.origin!,
     ).subscribe({
       next: res=>{
-        //console.log(res.content);
           this.setSearchStore(res);
+          this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
   }
   newSearch(){
+    this.loading.showLoading('Buscando',true);
     this.reportsService.defaulters(
       //this.getPage()-1,
       0,
@@ -88,11 +89,12 @@ export class SearchdefaultersComponent implements OnInit {
       this.getFormData("origin"),
     ).subscribe({
       next: res=>{
-        //console.log(res.content);
           this.setSearchStore(res);
           this.setSearchPage();
+          this.loading.showLoading('',false);
       },
       error: err=>{
+        this.loading.showLoading('',false);
       }
     })
 
@@ -144,7 +146,6 @@ export class SearchdefaultersComponent implements OnInit {
     this.loading.showLoading('Generando reporte',true);
     this.reportsService.defaultersAll().subscribe({
       next: res=>{
-        //console.log(res.content);
         this.xlsService.generateXLS(res);
         this.loading.showLoading('',false);
       },

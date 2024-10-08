@@ -13,7 +13,6 @@ export class ProcessService {
 
   getProcess(type:string){
     const url=`${this.baseUrl}log/process/${type}`;
-    console.log(url);
     return this.http.get<Array<Process>>(url)
   }
 }

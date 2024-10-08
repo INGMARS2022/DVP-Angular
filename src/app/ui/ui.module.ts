@@ -18,6 +18,7 @@ import { PayTableComponent } from './pay-table/pay-table.component';
 import { SearchrevenueComponent } from './searchrevenue/searchrevenue.component';
 import { RevenueTableComponent } from './revenue-table/revenue-table.component';
 import { PaginatorrevenueComponent } from './paginatorrevenue/paginatorrevenue.component';
+import { MessageflashComponent } from './messageflash/messageflash.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PaginatorrevenueComponent } from './paginatorrevenue/paginatorrevenue.c
     PayTableComponent,
     SearchrevenueComponent,
     RevenueTableComponent,
-    PaginatorrevenueComponent
+    PaginatorrevenueComponent,
+    MessageflashComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { PaginatorrevenueComponent } from './paginatorrevenue/paginatorrevenue.c
     PayTableComponent,
     SearchrevenueComponent,
     RevenueTableComponent,
-    PaginatorrevenueComponent
+    PaginatorrevenueComponent,
+    MessageflashComponent
   ],
 })
 export class UiModule { }

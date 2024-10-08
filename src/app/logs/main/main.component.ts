@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
   defaulter : Array<Process> = [];
   layout : Array<Process> = [];
   pagos : Array<Process> = [];
+  revenue: Array<Process>=[];
   
   constructor(private process: ProcessService) { }
 
@@ -18,12 +19,12 @@ export class MainComponent implements OnInit {
     this.getDefaulters();
     this.getLayout();
     this.getPagos();
+    this.getRevenue();
   }
   getDefaulters(){
     this.process.getProcess("DEFAULTER").subscribe({
       next: res=>{
         this.defaulter=res;
-        console.log(res);
       },
     })
   }
@@ -31,7 +32,6 @@ export class MainComponent implements OnInit {
     this.process.getProcess("LAYOUT").subscribe({
       next: res=>{
         this.layout=res;
-        console.log(res);
       },
     })
   }
@@ -39,7 +39,13 @@ export class MainComponent implements OnInit {
     this.process.getProcess("PAY").subscribe({
       next: res=>{
         this.pagos=res;
-        console.log(res);
+      },
+    })
+  }
+  getRevenue(){
+    this.process.getProcess("REVENUE").subscribe({
+      next: res=>{
+        this.revenue=res;
       },
     })
   }

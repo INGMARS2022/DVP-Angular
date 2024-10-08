@@ -21,7 +21,6 @@ export class LayoutTableComponent implements OnInit {
   ngOnInit(): void {
     this.searchLayout$.subscribe({
       next: res=>{
-        //console.log(res);
         this.searchLayoutStore$=res;
       }
     });

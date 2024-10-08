@@ -35,7 +35,6 @@ export class PaginatorlayoutComponent implements OnInit {
     });
     this.pageLayout$.subscribe({
       next: res=>{
-        console.log(res);
         this.pageLayoutStore$=res;
         this.initialPage=res;
       }
