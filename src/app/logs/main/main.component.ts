@@ -12,6 +12,7 @@ export class MainComponent implements OnInit {
   layout : Array<Process> = [];
   pagos : Array<Process> = [];
   revenue: Array<Process>=[];
+  cron : Array<Process>=[];
   
   constructor(private process: ProcessService) { }
 
@@ -20,6 +21,7 @@ export class MainComponent implements OnInit {
     this.getLayout();
     this.getPagos();
     this.getRevenue();
+    this.getCron();
   }
   getDefaulters(){
     this.process.getProcess("DEFAULTER").subscribe({
@@ -46,6 +48,13 @@ export class MainComponent implements OnInit {
     this.process.getProcess("REVENUE").subscribe({
       next: res=>{
         this.revenue=res;
+      },
+    })
+  }
+  getCron(){
+    this.process.getProcess("CRON").subscribe({
+      next: res=>{
+        this.cron=res;
       },
     })
   }

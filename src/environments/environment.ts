@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  /*DEV*/baseUrl: 'http://localhost:8085/api/'
+  ///*DEVLOCAL*/baseUrl: 'http://localhost:8085/api/'
+  /*DEV*/baseUrl: 'http://172.21.141.123:7001/dvp/api/'
  
 };
 

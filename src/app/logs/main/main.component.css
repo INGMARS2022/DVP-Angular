@@ -10,13 +10,13 @@
     z-index: 1;
 }
 h2{
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: 400;
     position: absolute;
     top:0;
     left: 0;
-    padding:5px 20px;
-    background: var(--secondaryColor);
+    padding:5px 30px;
+    background: var(--primaryColor);
     color: #ffffff;
 }
 .line-time{
@@ -24,7 +24,7 @@ h2{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 30px 50px;
+    padding: 20px 30px 60px;
     position: relative;
     margin:20px 0;
 }
@@ -74,12 +74,20 @@ p{
     width: 100px;
     text-align: center;
     font-size: .8rem;
-    font-weight: 400;
+    font-weight: 500;
     padding: 5px;
     position: absolute;
     top:40px;
     left: -25px;
     color: #a1a5b1;
+}
+p span{
+    font-size: .6rem;
+    display: block;
+    font-weight: 800;
+}
+p span b{
+    font-size: .5rem;
 }
 .error p{
     color: var(--secondaryColor);
@@ -91,6 +99,6 @@ p{
     color: var(--primaryColor);
 }
 svg{
-    width: 20px;
+    width: 18px;
     color: #fff;
 }
