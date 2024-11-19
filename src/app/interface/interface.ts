@@ -132,6 +132,7 @@ export interface Pay {
     brmNumberBill:    null | string;
     brmSeriesBill:    null | string;
     origin:           null | string;
+    brmFormPay:       null | string;
 }
 export interface searchDefaultersStore{
     client?: string,

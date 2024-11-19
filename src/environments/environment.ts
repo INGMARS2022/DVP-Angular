@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   ///*DEVLOCAL*/baseUrl: 'http://localhost:8085/api/'
-  /*DEV*/baseUrl: 'http://172.21.141.123:7001/dvp/api/'
+  ///*DEV*/baseUrl: 'http://172.21.141.123:7001/dvp/api/'
+  /*QA*/baseUrl:'https://172.28.94.124:7002/dvp/api/'
  
 };
 

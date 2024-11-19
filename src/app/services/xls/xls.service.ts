@@ -316,7 +316,8 @@ export class XlsService {
       'Monto factura',
       'Folio factura',
       'Serie factura',
-      'RPT'
+      'RPT',
+      'Fecha de pago'
     ]
     headerRow.font = {bold:true,size:12 };
     const rowsToInsert = sheet.getRows(3,data.length)!;
@@ -329,15 +330,16 @@ export class XlsService {
         item.customerAccount,
         item.customerName,
         item.billingProducts,
-        item.brmPayDate,
+        //item.brmPayDate,
         item.brmOriginPay,
         item.brmTotalPay,
-        '',
+        item.brmOriginPay,
         item.brmCurrency,
         item.brmTotalBill,
         item.brmNumberBill,    
         item.brmSeriesBill,
-        item.customerRpt
+        item.customerRpt,
+        item.brmPayDate
       ]
     }
   }

@@ -14,7 +14,7 @@
 }
 .main > div:nth-child(2){
     height: 100%;
-    background-image: url("/assets/background.png");
+    background-image: url("/izzidvp/assets/background.png");
     background-size: cover;
     background-position: center;
 }
