@@ -63,6 +63,7 @@ export interface Defaulters {
     hit1:                  null | string;
     hit3:                   null | string;
     bucket:                 null | string;
+    mora:                 null | string;
 }
 export interface Layout {
     id:                    number;
@@ -113,6 +114,7 @@ export interface Layout {
     serviceInterStreet2:   null | string;
     serviceInterNumber:    null | string;
     mora:                  null | string;
+    billingType:           null | string;
 }
 export interface Pay {
     id:               number;
