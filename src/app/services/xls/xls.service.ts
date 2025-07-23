@@ -139,7 +139,7 @@ export class XlsService {
         item.brmChargeDateAccount,
         item.billingSubtype,
         item.serviceAddress,
-        '',
+        item.mora,
         item.bucket,
         item.serviceAccount,
         item.brmPhoneMain,
